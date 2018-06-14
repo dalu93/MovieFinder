@@ -10,6 +10,8 @@ import Foundation
 
 // MARK: - AppError declaration
 enum AppError {
+
+    // MARK: - Request declaration
     enum Request: Error {
         case invalidResponseData
         case invalidStatusCode(Int)

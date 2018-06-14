@@ -54,12 +54,12 @@ struct Parameter {
     let field: String
 
     /// The parameter value
-    let value: AnyObject
+    let value: Any
 }
 
 // MARK: - DictionaryConvertible
 extension Parameter: DictionaryConvertible {
-    var dictionary: [String: AnyObject]? {
+    var dictionary: [String: Any]? {
         return [
             field: value
         ]
@@ -83,17 +83,29 @@ struct Endpoint {
 
     /// The headers
     fileprivate let _headers: [HTTPHeader]?
+
+    init(
+        path: String,
+        method: HTTPMethod,
+        parameters: [Parameter]?,
+        headers: [HTTPHeader]?
+    ) {
+        self.path = path
+        self.method = method
+        self._parameters = parameters
+        self._headers = headers
+    }
 }
 
 // MARK: - Computed properties
 extension Endpoint {
 
     /// The encoded parameters, ready for the use
-    var parameters: [String: AnyObject]? {
+    var parameters: [String: Any]? {
 
         guard let parameters = _parameters else { return nil }
 
-        var encParameters: [String: AnyObject] = [:]
+        var encParameters: [String: Any] = [:]
         parameters.forEach {
             guard let paramDict = $0.dictionary else { return }
             encParameters += paramDict
@@ -126,5 +138,5 @@ struct Resource<A> {
     let endpoint: Endpoint
 
     /// A closure that indicates how to convert the response in a generic object
-    let parse: (Any) -> A?
+    let parse: (Data) throws -> A
 }

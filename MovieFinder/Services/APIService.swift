@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - APIService declaration
 struct APIService: APIConnectable {
     let baseAPIURL: String
     let sessionConfiguration: URLSessionConfiguration
@@ -16,12 +17,7 @@ struct APIService: APIConnectable {
         resource: Resource<Object>,
         completion: @escaping (Completion<Object>) -> Void
     ) -> URLSessionDataTask {
-        let request = URLRequest(
-            url: _fullURL(
-                using: resource.endpoint.path
-            )
-        )
-
+        let request = _request(from: resource)
         let session = URLSession(configuration: sessionConfiguration)
         let task = session.dataTask(with: request) { data, urlResponse, error in
             guard error == nil else {
@@ -44,12 +40,11 @@ struct APIService: APIConnectable {
                 return
             }
 
-            guard let parsedObject = resource.parse(data) else {
+            do {
+                completion(.success(try resource.parse(data)))
+            } catch {
                 completion(.failed(AppError.Request.invalidResponseData))
-                return
             }
-
-            completion(.success(parsedObject))
         }
 
         task.resume()
@@ -65,5 +60,42 @@ private extension APIService {
         }
 
         return url
+    }
+
+    func _request<Object>(from resource: Resource<Object>) -> URLRequest {
+        var url = _fullURL(
+            using: resource.endpoint.path
+        )
+
+        if resource.endpoint.method == .get,
+            let params = resource.endpoint.parameters {
+            let previousUrlString = url.absoluteString
+            let queryString = params.reduce("?") { previousResult, args in
+                guard let value = args.value as? String else {
+                    return previousResult
+                }
+
+                return previousResult + args.key + "=" + value + "&"
+            }
+
+            let fullUrlString = previousUrlString + queryString
+            guard let fullUrl = URL(string: fullUrlString) else {
+                fatalError("Cannot create URL using the query string: \(queryString)")
+            }
+
+            url = fullUrl
+        }
+        var request = URLRequest(
+            url: _fullURL(
+                using: resource.endpoint.path
+            )
+        )
+
+        request.httpMethod = resource.endpoint.method.rawValue
+        resource.endpoint.headers?.forEach {
+            request.addValue($1, forHTTPHeaderField: $0)
+        }
+
+        return request
     }
 }

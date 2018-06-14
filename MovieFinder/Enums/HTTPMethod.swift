@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - HTTPMethod declaration
 enum HTTPMethod: String {
     case get = "GET" // others are missing. Not needed for this app.
 }

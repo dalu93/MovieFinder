@@ -30,6 +30,8 @@
 		49BA6D4C20D2C3E600296945 /* DictionaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */; };
 		49BA6D4E20D2C43D00296945 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D4D20D2C43D00296945 /* Completion.swift */; };
 		49BA6D5120D2C8C100296945 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5020D2C8C100296945 /* APIService.swift */; };
+		49BA6D5320D2CFCA00296945 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5220D2CFCA00296945 /* SearchResult.swift */; };
+		49BA6D5520D2D41B00296945 /* Endpoint+All.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5420D2D41B00296945 /* Endpoint+All.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryConvertible.swift; sourceTree = "<group>"; };
 		49BA6D4D20D2C43D00296945 /* Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
 		49BA6D5020D2C8C100296945 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		49BA6D5220D2CFCA00296945 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		49BA6D5420D2D41B00296945 /* Endpoint+All.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+All.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +148,7 @@
 			children = (
 				49BA6D3720D2BF0100296945 /* Realm+Store.swift */,
 				49BA6D4920D2C3BD00296945 /* DictionaryExtensions.swift */,
+				49BA6D5420D2D41B00296945 /* Endpoint+All.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				49BA6D3B20D2BF6B00296945 /* Movie.swift */,
+				49BA6D5220D2CFCA00296945 /* SearchResult.swift */,
 				49BA6D3A20D2BF6B00296945 /* Suggestion.swift */,
 				49BA6D3920D2BF3300296945 /* Entities */,
 			);
@@ -369,6 +375,7 @@
 				49BA6D3D20D2BF6B00296945 /* Movie.swift in Sources */,
 				49BA6D4C20D2C3E600296945 /* DictionaryConvertible.swift in Sources */,
 				49BA6D4420D2C27A00296945 /* APIConnectable.swift in Sources */,
+				49BA6D5320D2CFCA00296945 /* SearchResult.swift in Sources */,
 				496E4C6B20D24D5700A133AD /* ViewController.swift in Sources */,
 				49BA6D3C20D2BF6B00296945 /* Suggestion.swift in Sources */,
 				49BA6D3620D2BECA00296945 /* AppError.swift in Sources */,
@@ -376,6 +383,7 @@
 				49BA6D3420D2BE7800296945 /* Storeable.swift in Sources */,
 				496E4C6920D24D5700A133AD /* AppDelegate.swift in Sources */,
 				49BA6D3220D2BE7800296945 /* Entity.swift in Sources */,
+				49BA6D5520D2D41B00296945 /* Endpoint+All.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

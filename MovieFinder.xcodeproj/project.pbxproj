@@ -77,8 +77,13 @@
 		496E4C6720D24D5700A133AD /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D2820D2BB4A00296945 /* ViewControllers */,
+				49BA6D2720D2BB4500296945 /* ViewModels */,
+				49BA6D2620D2BB4100296945 /* Models */,
+				49BA6D2520D2BB3800296945 /* Enums */,
+				49BA6D2420D2BB3200296945 /* Protocols */,
+				49BA6D2320D2BB2600296945 /* Extensions */,
 				496E4C6820D24D5700A133AD /* AppDelegate.swift */,
-				496E4C6A20D24D5700A133AD /* ViewController.swift */,
 				496E4C6C20D24D5700A133AD /* Main.storyboard */,
 				496E4C6F20D24D5900A133AD /* Assets.xcassets */,
 				496E4C7120D24D5900A133AD /* LaunchScreen.storyboard */,
@@ -94,6 +99,49 @@
 				496E4C7F20D24D5900A133AD /* Info.plist */,
 			);
 			path = MovieFinderTests;
+			sourceTree = "<group>";
+		};
+		49BA6D2320D2BB2600296945 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		49BA6D2420D2BB3200296945 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		49BA6D2520D2BB3800296945 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		49BA6D2620D2BB4100296945 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		49BA6D2720D2BB4500296945 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49BA6D2820D2BB4A00296945 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				496E4C6A20D24D5700A133AD /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

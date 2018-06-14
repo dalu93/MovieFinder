@@ -8,13 +8,36 @@
 
 import Foundation
 
+protocol AppErrorType: Error, CustomStringConvertible {}
+
 // MARK: - AppError declaration
 enum AppError {
 
     // MARK: - Request declaration
-    enum Request: Error {
+    enum Request: AppErrorType {
         case invalidResponseData
         case invalidStatusCode(Int)
         case invalidConnection
+
+        var description: String {
+            switch self {
+            case .invalidResponseData, .invalidStatusCode:
+                return "A server error occurred. Please, try again."
+
+            case .invalidConnection:
+                return "Please, check your internet connection and try again."
+            }
+        }
+    }
+
+    enum Search: AppErrorType {
+        case invalidKeyword
+
+        var description: String {
+            switch self {
+            case .invalidKeyword:
+                return "The keyword must not be empty"
+            }
+        }
     }
 }

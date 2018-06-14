@@ -17,7 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     ) -> Bool {
-        // Override point for customization after application launch.
+        let apiService = APIService(
+            baseAPIURL: "http://api.themoviedb.org/3",
+            sessionConfiguration: .default
+        )
+
+        let viewModel = SearchViewModel<APIService>(apiService)
+        let controller = SearchViewController(viewModel)
+        window!.rootViewController = controller
+        window!.makeKeyAndVisible()
+        
         return true
     }
 

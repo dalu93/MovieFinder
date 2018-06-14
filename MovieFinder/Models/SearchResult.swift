@@ -44,7 +44,7 @@ extension SearchResult {
         at page: Int,
         using service: APIService,
         completion: @escaping ((Completion<SearchResult>) -> Void)
-    ) {
+    ) -> APIService.RequestType {
         let resource = Resource<SearchResult>(
             endpoint: Endpoint.search(using: keyword, at: page),
             parse: { data in
@@ -52,7 +52,7 @@ extension SearchResult {
             }
         )
 
-        _ = service.load(
+        return service.load(
             resource: resource,
             completion: completion
         )

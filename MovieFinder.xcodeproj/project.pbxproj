@@ -20,6 +20,9 @@
 		49BA6D3420D2BE7800296945 /* Storeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3120D2BE7800296945 /* Storeable.swift */; };
 		49BA6D3620D2BECA00296945 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3520D2BECA00296945 /* AppError.swift */; };
 		49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3720D2BF0100296945 /* Realm+Store.swift */; };
+		49BA6D3C20D2BF6B00296945 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3A20D2BF6B00296945 /* Suggestion.swift */; };
+		49BA6D3D20D2BF6B00296945 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3B20D2BF6B00296945 /* Movie.swift */; };
+		49BA6D3F20D2BF7200296945 /* SuggestionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3E20D2BF7200296945 /* SuggestionEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		49BA6D3120D2BE7800296945 /* Storeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storeable.swift; sourceTree = "<group>"; };
 		49BA6D3520D2BECA00296945 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		49BA6D3720D2BF0100296945 /* Realm+Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Store.swift"; sourceTree = "<group>"; };
+		49BA6D3A20D2BF6B00296945 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		49BA6D3B20D2BF6B00296945 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		49BA6D3E20D2BF7200296945 /* SuggestionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,9 @@
 		49BA6D2620D2BB4100296945 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D3B20D2BF6B00296945 /* Movie.swift */,
+				49BA6D3A20D2BF6B00296945 /* Suggestion.swift */,
+				49BA6D3920D2BF3300296945 /* Entities */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,6 +182,14 @@
 				49BA6D2C20D2BD9C00296945 /* RealmSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49BA6D3920D2BF3300296945 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D3E20D2BF7200296945 /* SuggestionEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,7 +317,10 @@
 			files = (
 				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
+				49BA6D3F20D2BF7200296945 /* SuggestionEntity.swift in Sources */,
+				49BA6D3D20D2BF6B00296945 /* Movie.swift in Sources */,
 				496E4C6B20D24D5700A133AD /* ViewController.swift in Sources */,
+				49BA6D3C20D2BF6B00296945 /* Suggestion.swift in Sources */,
 				49BA6D3620D2BECA00296945 /* AppError.swift in Sources */,
 				49BA6D3420D2BE7800296945 /* Storeable.swift in Sources */,
 				496E4C6920D24D5700A133AD /* AppDelegate.swift in Sources */,

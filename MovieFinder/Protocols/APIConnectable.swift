@@ -12,5 +12,5 @@ protocol APIConnectable {
     associatedtype RequestType
 
     var baseAPIURL: String { get }
-    func load<Object>(resource: Resource<Object>, completion: (Completion<Object>) -> Void) -> RequestType
+    func load<Object>(resource: Resource<Object>, completion: @escaping (Completion<Object>) -> Void) -> RequestType
 }

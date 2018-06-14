@@ -118,7 +118,7 @@ extension Endpoint {
 
 /**
  *  The `Resource` struct contains the information about how to retrieve a
- *  specific resource and how to parse it from a JSON response
+ *  specific resource and how to parse it from a Data response
  */
 struct Resource<A> {
 
@@ -126,5 +126,5 @@ struct Resource<A> {
     let endpoint: Endpoint
 
     /// A closure that indicates how to convert the response in a generic object
-    let parseJSON: (Any) -> A?
+    let parse: (Any) -> A?
 }

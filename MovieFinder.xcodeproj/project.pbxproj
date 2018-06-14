@@ -29,6 +29,7 @@
 		49BA6D4A20D2C3BD00296945 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D4920D2C3BD00296945 /* DictionaryExtensions.swift */; };
 		49BA6D4C20D2C3E600296945 /* DictionaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */; };
 		49BA6D4E20D2C43D00296945 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D4D20D2C43D00296945 /* Completion.swift */; };
+		49BA6D5120D2C8C100296945 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5020D2C8C100296945 /* APIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		49BA6D4920D2C3BD00296945 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryConvertible.swift; sourceTree = "<group>"; };
 		49BA6D4D20D2C43D00296945 /* Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
+		49BA6D5020D2C8C100296945 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		496E4C6720D24D5700A133AD /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D4F20D2C5FD00296945 /* Services */,
 				49BA6D2820D2BB4A00296945 /* ViewControllers */,
 				49BA6D2720D2BB4500296945 /* ViewModels */,
 				49BA6D2620D2BB4100296945 /* Models */,
@@ -208,6 +211,14 @@
 				49BA6D3E20D2BF7200296945 /* SuggestionEntity.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		49BA6D4F20D2C5FD00296945 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D5020D2C8C100296945 /* APIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BA6D5120D2C8C100296945 /* APIService.swift in Sources */,
 				49BA6D4820D2C2ED00296945 /* Resource.swift in Sources */,
 				49BA6D4A20D2C3BD00296945 /* DictionaryExtensions.swift in Sources */,
 				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,

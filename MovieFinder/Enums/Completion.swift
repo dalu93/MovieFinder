@@ -17,7 +17,7 @@ import Foundation
  */
 enum Completion<Value> {
     case success(Value)
-    case failed(NSError)
+    case failed(Error)
 
     /// Succeeded or not
     var isSuccess: Bool {
@@ -36,7 +36,7 @@ enum Completion<Value> {
     }
 
     /// The associated error if the operation was completed with error
-    var error: NSError? {
+    var error: Error? {
         switch self {
         case .success:              return nil
         case .failed(let error):    return error

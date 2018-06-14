@@ -9,7 +9,10 @@
 import Foundation
 
 // MARK: - AppError declaration
-enum AppError: Error {
-    case invalidJson
-    case noInternetConnection
+enum AppError {
+    enum Request: Error {
+        case invalidResponseData
+        case invalidStatusCode(Int)
+        case invalidConnection
+    }
 }

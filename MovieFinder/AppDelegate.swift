@@ -22,11 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sessionConfiguration: .default
         )
 
-        let viewModel = SearchViewModel<APIService>(apiService)
-        let controller = SearchViewController(viewModel)
-        window!.rootViewController = controller
+        let flowController = MainFlowController(
+            dependencies: MainFlowController.DependencyGroup(
+                apiService: apiService
+            )
+        )
+
+        let startController = flowController.startController
+        window!.rootViewController = startController
         window!.makeKeyAndVisible()
-        
+
         return true
     }
 

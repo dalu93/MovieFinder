@@ -86,9 +86,7 @@ private extension APIService {
             url = fullUrl
         }
         var request = URLRequest(
-            url: _fullURL(
-                using: resource.endpoint.path
-            )
+            url: url
         )
 
         request.httpMethod = resource.endpoint.method.rawValue

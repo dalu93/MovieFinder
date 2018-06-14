@@ -19,7 +19,7 @@ struct Movie: Codable {
 
     let posterUrl: URL
     let name: String
-    let release: Date
+    let release: String
     let overview: String
 }
 

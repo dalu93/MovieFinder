@@ -35,11 +35,7 @@ final class SearchViewController: UIViewController {
 extension SearchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .white
-        _ = _searchTextField
-        _ = _searchButton
-
+        _setupUI()
         _bind()
     }
 }
@@ -65,7 +61,7 @@ private extension SearchViewController {
 
                     self?._handleError(appError)
                 } else if let value = result.value {
-                    // Display search result
+                    self?._viewModel.showResult(for: value)
                 } else {
                     fatalError("[DEV ERROR] No value or valid error was returned")
                 }
@@ -97,6 +93,16 @@ private extension SearchViewController {
         controller.addAction(okAction)
 
         present(controller, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UI Helpers
+private extension SearchViewController {
+    func _setupUI() {
+        title = "Movie Finder"
+        view.backgroundColor = .white
+        _ = _searchTextField
+        _ = _searchButton
     }
 }
 

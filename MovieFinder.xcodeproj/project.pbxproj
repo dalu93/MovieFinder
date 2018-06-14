@@ -35,6 +35,8 @@
 		49BA6D5920D2D7BC00296945 /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5820D2D7BC00296945 /* ConnectionStatus.swift */; };
 		49BA6D5C20D2D92300296945 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5B20D2D92300296945 /* Bindable.swift */; };
 		49BA6D5E20D2DC8900296945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5D20D2DC8900296945 /* SearchViewController.swift */; };
+		49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6420D2EABF00296945 /* MainFlowController.swift */; };
+		49BA6D6720D2EB8800296945 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6620D2EB8800296945 /* FlowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		49BA6D5820D2D7BC00296945 /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		49BA6D5B20D2D92300296945 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		49BA6D5D20D2DC8900296945 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		49BA6D6420D2EABF00296945 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
+		49BA6D6620D2EB8800296945 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		496E4C6720D24D5700A133AD /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D6320D2EAAB00296945 /* FlowControllers */,
 				49BA6D5A20D2D91700296945 /* Utilities */,
 				49BA6D4F20D2C5FD00296945 /* Services */,
 				49BA6D2820D2BB4A00296945 /* ViewControllers */,
@@ -168,6 +173,7 @@
 				49BA6D3120D2BE7800296945 /* Storeable.swift */,
 				49BA6D4320D2C27A00296945 /* APIConnectable.swift */,
 				49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */,
+				49BA6D6620D2EB8800296945 /* FlowController.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -242,6 +248,14 @@
 				49BA6D5B20D2D92300296945 /* Bindable.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		49BA6D6320D2EAAB00296945 /* FlowControllers */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D6420D2EABF00296945 /* MainFlowController.swift */,
+			);
+			path = FlowControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,10 +402,12 @@
 				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,
 				49BA6D5C20D2D92300296945 /* Bindable.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
+				49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */,
 				49BA6D3F20D2BF7200296945 /* SuggestionEntity.swift in Sources */,
 				49BA6D5720D2D65F00296945 /* SearchViewModel.swift in Sources */,
 				49BA6D4E20D2C43D00296945 /* Completion.swift in Sources */,
 				49BA6D3D20D2BF6B00296945 /* Movie.swift in Sources */,
+				49BA6D6720D2EB8800296945 /* FlowController.swift in Sources */,
 				49BA6D4C20D2C3E600296945 /* DictionaryConvertible.swift in Sources */,
 				49BA6D4420D2C27A00296945 /* APIConnectable.swift in Sources */,
 				49BA6D5320D2CFCA00296945 /* SearchResult.swift in Sources */,

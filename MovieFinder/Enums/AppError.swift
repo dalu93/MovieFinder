@@ -32,11 +32,15 @@ enum AppError {
 
     enum Search: AppErrorType {
         case invalidKeyword
+        case noResults
 
         var description: String {
             switch self {
             case .invalidKeyword:
                 return "The keyword must not be empty"
+
+            case .noResults:
+                return "No results were found for the specified keyword"
             }
         }
     }

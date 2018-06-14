@@ -24,10 +24,12 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     private(set) var searchStatus: Bindable<ConnectionStatus<APIService.RequestType, SearchResult>> = Bindable(.notStarted)
     // MARK: Private properties
     fileprivate let _service: APIService
+    fileprivate let _flowController: MainFlowController
 
     // MARK: - Object lifecycle
-    init(_ service: APIService) {
+    init(_ service: APIService, flowController: MainFlowController) {
         _service = service
+        _flowController = flowController
     }
 
     // MARK: - Methods
@@ -38,15 +40,25 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
             return
         }
 
+        let page = 1
         let request = SearchResult.get(
             with: keyword,
-            at: 1,
+            at: page,
             using: _service
         ) { [weak self] result in
             self?.searchStatus.value = .completed(result)
         }
 
         searchStatus.value = .inProgress(request)
+    }
+
+    func showResult(for searchResult: SearchResult) {
+        guard searchResult.results.count > 0 else {
+            searchStatus.value = .completed(.failed(AppError.Search.noResults))
+            return
+        }
+
+        _flowController.show(searchResult)
     }
 
     // MARK: Private methods

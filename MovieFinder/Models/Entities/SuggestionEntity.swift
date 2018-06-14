@@ -13,6 +13,10 @@ import Realm
 // MARK: - SuggestionEntity declaration
 final class SuggestionEntity: Object {
     @objc var keyword: String = ""
+
+    override static func primaryKey() -> String {
+        return "keyword"
+    }
 }
 
 // MARK: - Entity

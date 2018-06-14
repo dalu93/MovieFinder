@@ -19,6 +19,7 @@
 		49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3020D2BE7800296945 /* JSONRepresentable.swift */; };
 		49BA6D3420D2BE7800296945 /* Storeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3120D2BE7800296945 /* Storeable.swift */; };
 		49BA6D3620D2BECA00296945 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3520D2BECA00296945 /* AppError.swift */; };
+		49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D3720D2BF0100296945 /* Realm+Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		49BA6D3020D2BE7800296945 /* JSONRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRepresentable.swift; sourceTree = "<group>"; };
 		49BA6D3120D2BE7800296945 /* Storeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storeable.swift; sourceTree = "<group>"; };
 		49BA6D3520D2BECA00296945 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		49BA6D3720D2BF0100296945 /* Realm+Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Store.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		49BA6D2320D2BB2600296945 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D3720D2BF0100296945 /* Realm+Store.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
 				496E4C6B20D24D5700A133AD /* ViewController.swift in Sources */,
 				49BA6D3620D2BECA00296945 /* AppError.swift in Sources */,

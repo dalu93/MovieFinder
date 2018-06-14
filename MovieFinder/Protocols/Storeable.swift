@@ -20,7 +20,7 @@ protocol Store {
 // MARK: - Storeable
 /// Use a `Store` to save in a specific storage a `Storeable` structure.
 protocol Storeable {
-    associatedtype S: Store
-    func save(using store: S) throws
-    func delete(using store: S) throws
+    associatedtype AssociatedStore: Store
+    func save(using store: AssociatedStore) throws
+    func delete(using store: AssociatedStore) throws
 }

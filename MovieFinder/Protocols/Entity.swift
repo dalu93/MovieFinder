@@ -17,7 +17,7 @@ protocol Entity: Storeable {}
 /// initied from a specific `Entity`.
 protocol EntityRepresentable {
     associatedtype Entity
-    
+
     var entity: Entity { get }
     init(with entity: Entity)
 }

@@ -200,6 +200,7 @@
 			buildConfigurationList = 496E4C8220D24D5900A133AD /* Build configuration list for PBXNativeTarget "MovieFinder" */;
 			buildPhases = (
 				496E4C6120D24D5700A133AD /* Sources */,
+				49BA6D4020D2C03600296945 /* SwiftLint */,
 				496E4C6220D24D5700A133AD /* Frameworks */,
 				496E4C6320D24D5700A133AD /* Resources */,
 				49BA6D2920D2BD7800296945 /* Carthage */,
@@ -307,6 +308,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		49BA6D4020D2C03600296945 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

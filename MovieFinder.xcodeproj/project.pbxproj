@@ -13,6 +13,8 @@
 		496E4C7020D24D5900A133AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496E4C6F20D24D5900A133AD /* Assets.xcassets */; };
 		496E4C7320D24D5900A133AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496E4C7120D24D5900A133AD /* LaunchScreen.storyboard */; };
 		496E4C7E20D24D5900A133AD /* MovieFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E4C7D20D24D5900A133AD /* MovieFinderTests.swift */; };
+		49BA6D2D20D2BD9C00296945 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D2B20D2BD9C00296945 /* Realm.framework */; };
+		49BA6D2E20D2BD9C00296945 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D2C20D2BD9C00296945 /* RealmSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		496E4C7920D24D5900A133AD /* MovieFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		496E4C7D20D24D5900A133AD /* MovieFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFinderTests.swift; sourceTree = "<group>"; };
 		496E4C7F20D24D5900A133AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49BA6D2B20D2BD9C00296945 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		49BA6D2C20D2BD9C00296945 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BA6D2D20D2BD9C00296945 /* Realm.framework in Frameworks */,
+				49BA6D2E20D2BD9C00296945 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +68,7 @@
 				496E4C6720D24D5700A133AD /* MovieFinder */,
 				496E4C7C20D24D5900A133AD /* MovieFinderTests */,
 				496E4C6620D24D5700A133AD /* Products */,
+				49BA6D2A20D2BD9C00296945 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +151,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		49BA6D2A20D2BD9C00296945 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D2B20D2BD9C00296945 /* Realm.framework */,
+				49BA6D2C20D2BD9C00296945 /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +170,7 @@
 				496E4C6120D24D5700A133AD /* Sources */,
 				496E4C6220D24D5700A133AD /* Frameworks */,
 				496E4C6320D24D5700A133AD /* Resources */,
+				49BA6D2920D2BD7800296945 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -239,6 +256,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49BA6D2920D2BD7800296945 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		496E4C6120D24D5700A133AD /* Sources */ = {
@@ -407,6 +445,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MovieFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -424,6 +466,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MovieFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

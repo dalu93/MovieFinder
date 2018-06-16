@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,14 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     ) -> Bool {
+        setupLogger()
         let apiService = APIService(
             baseAPIURL: "http://api.themoviedb.org/3",
             sessionConfiguration: .default
         )
 
+        var realm: Realm!
+        do {
+            realm = try Realm()
+            log.info("Realm created. File can be found at \(realm.configuration.fileURL!)")
+        } catch {
+            log.error("Couldn't create application realm")
+            fatalError("[DEV ERROR] Failed to create application realm")
+        }
+
         let flowController = MainFlowController(
             dependencies: MainFlowController.DependencyGroup(
-                apiService: apiService
+                apiService: apiService,
+                suggestionStore: SuggestionStore(realm: realm)
             )
         )
 

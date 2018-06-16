@@ -25,11 +25,13 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     // MARK: Private properties
     fileprivate let _service: APIService
     fileprivate let _flowController: MainFlowController
+    fileprivate let _suggestionStore: SuggestionStore
 
     // MARK: - Object lifecycle
-    init(_ service: APIService, flowController: MainFlowController) {
+    init(service: APIService, flowController: MainFlowController, suggestionStore: SuggestionStore) {
         _service = service
         _flowController = flowController
+        _suggestionStore = suggestionStore
     }
 
     // MARK: - Methods
@@ -47,6 +49,9 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
             using: _service
         ) { [weak self] result in
             self?.searchStatus.value = .completed(result)
+            if result.isSuccess {
+                self?._save(keyword)
+            }
         }
 
         searchStatus.value = .inProgress(request)
@@ -64,5 +69,15 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     // MARK: Private methods
     private func _isKeywordValid(_ keyword: String) -> Bool {
         return keyword.count > 0
+    }
+
+    private func _save(_ keyword: String) {
+        let suggestion = Suggestion(keyword: keyword)
+        let entity = suggestion.entity
+        do {
+            try self._suggestionStore.save(entity)
+        } catch {
+            log.debug("The suggestion (\"\(entity.keyword)\") couldn't be saved. \(error)")
+        }
     }
 }

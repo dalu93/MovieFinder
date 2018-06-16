@@ -1,1 +1,3 @@
 github "realm/realm-cocoa"
+github "devxoul/Toaster"
+github "SwiftyBeaver/SwiftyBeaver"

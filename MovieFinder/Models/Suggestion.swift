@@ -16,10 +16,12 @@ struct Suggestion: Codable {
 // MARK: - EntityRepresentable
 extension Suggestion: EntityRepresentable {
     var entity: SuggestionEntity {
-        return SuggestionEntity()
+        let entity = SuggestionEntity()
+        entity.keyword = keyword
+        return entity
     }
 
     init(with entity: SuggestionEntity) {
-        keyword = ""
+        self.keyword = entity.keyword
     }
 }

@@ -20,30 +20,32 @@ struct APIService: APIConnectable {
         let request = _request(from: resource)
         let session = URLSession(configuration: sessionConfiguration)
         let task = session.dataTask(with: request) { data, urlResponse, error in
-            guard error == nil else {
-                completion(.failed(AppError.Request.invalidConnection))
-                return
-            }
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    completion(.failed(AppError.Request.invalidConnection))
+                    return
+                }
 
-            guard let httpResponse = urlResponse as? HTTPURLResponse else {
-                completion(.failed(AppError.Request.invalidConnection))
-                return
-            }
+                guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                    completion(.failed(AppError.Request.invalidConnection))
+                    return
+                }
 
-            guard (200..<300).contains(httpResponse.statusCode) else {
-                completion(.failed(AppError.Request.invalidStatusCode(httpResponse.statusCode)))
-                return
-            }
+                guard (200..<300).contains(httpResponse.statusCode) else {
+                    completion(.failed(AppError.Request.invalidStatusCode(httpResponse.statusCode)))
+                    return
+                }
 
-            guard let data = data, data.count > 0 else {
-                completion(.failed(AppError.Request.invalidResponseData))
-                return
-            }
+                guard let data = data, data.count > 0 else {
+                    completion(.failed(AppError.Request.invalidResponseData))
+                    return
+                }
 
-            do {
-                completion(.success(try resource.parse(data)))
-            } catch {
-                completion(.failed(AppError.Request.invalidResponseData))
+                do {
+                    completion(.success(try resource.parse(data)))
+                } catch {
+                    completion(.failed(AppError.Request.invalidResponseData))
+                }
             }
         }
 
@@ -75,7 +77,8 @@ private extension APIService {
                     return previousResult
                 }
 
-                return previousResult + args.key + "=" + value + "&"
+                let encodedUrlValue = value.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+                return previousResult + args.key + "=" + encodedUrlValue + "&"
             }
 
             let fullUrlString = previousUrlString + queryString

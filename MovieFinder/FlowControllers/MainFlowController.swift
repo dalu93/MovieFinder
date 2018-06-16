@@ -13,12 +13,17 @@ import UIKit
 struct MainFlowController: FlowController {
     struct DependencyGroup {
         let apiService: APIService
+        let suggestionStore: SuggestionStore
     }
 
     let dependencies: DependencyGroup
 
     var startController: UIViewController {
-        let viewModel = SearchViewModel<APIService>(dependencies.apiService, flowController: self)
+        let viewModel = SearchViewModel<APIService>(
+            service: dependencies.apiService,
+            flowController: self,
+            suggestionStore: dependencies.suggestionStore
+        )
         return UINavigationController(
             rootViewController: SearchViewController(viewModel)
         )

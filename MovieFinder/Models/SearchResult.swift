@@ -22,6 +22,7 @@ struct SearchResult: Codable {
     let totalResults: Int
     let totalPages: Int
     let results: [Movie]
+    fileprivate(set) var keyword: String = ""
 }
 
 // MARK: - JSONRepresentable
@@ -48,12 +49,26 @@ extension SearchResult {
         let resource = Resource<SearchResult>(
             endpoint: Endpoint.search(using: keyword, at: page),
             parse: { data in
-                return try SearchResult(with: data)
+                var result = try SearchResult(with: data)
+                result.keyword = keyword
+                return result
             }
         )
 
         return service.load(
             resource: resource,
+            completion: completion
+        )
+    }
+
+    func nextPage<APIService: APIConnectable>(
+        using service: APIService,
+        completion: @escaping ((Completion<SearchResult>) -> Void)
+    ) {
+        _ = SearchResult.get(
+            with: keyword,
+            at: page + 1,
+            using: service,
             completion: completion
         )
     }

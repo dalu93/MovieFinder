@@ -37,6 +37,10 @@
 		49BA6D5E20D2DC8900296945 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D5D20D2DC8900296945 /* SearchViewController.swift */; };
 		49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6420D2EABF00296945 /* MainFlowController.swift */; };
 		49BA6D6720D2EB8800296945 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6620D2EB8800296945 /* FlowController.swift */; };
+		49BA6D6920D4E09700296945 /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D6820D4E09700296945 /* Toaster.framework */; };
+		49BA6D6B20D4E75500296945 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D6A20D4E75500296945 /* SwiftyBeaver.framework */; };
+		49BA6D6D20D4E78300296945 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6C20D4E78300296945 /* Log.swift */; };
+		49BA6D7020D4E90600296945 /* SuggestionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6F20D4E90600296945 /* SuggestionStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		49BA6D5D20D2DC8900296945 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		49BA6D6420D2EABF00296945 /* MainFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; };
 		49BA6D6620D2EB8800296945 /* FlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		49BA6D6820D4E09700296945 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = Carthage/Build/iOS/Toaster.framework; sourceTree = "<group>"; };
+		49BA6D6A20D4E75500296945 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		49BA6D6C20D4E78300296945 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		49BA6D6F20D4E90600296945 /* SuggestionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,8 @@
 			files = (
 				49BA6D2D20D2BD9C00296945 /* Realm.framework in Frameworks */,
 				49BA6D2E20D2BD9C00296945 /* RealmSwift.framework in Frameworks */,
+				49BA6D6B20D4E75500296945 /* SwiftyBeaver.framework in Frameworks */,
+				49BA6D6920D4E09700296945 /* Toaster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +138,7 @@
 		496E4C6720D24D5700A133AD /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D6E20D4E8FB00296945 /* Stores */,
 				49BA6D6320D2EAAB00296945 /* FlowControllers */,
 				49BA6D5A20D2D91700296945 /* Utilities */,
 				49BA6D4F20D2C5FD00296945 /* Services */,
@@ -138,6 +149,7 @@
 				49BA6D2420D2BB3200296945 /* Protocols */,
 				49BA6D2320D2BB2600296945 /* Extensions */,
 				496E4C6820D24D5700A133AD /* AppDelegate.swift */,
+				49BA6D6C20D4E78300296945 /* Log.swift */,
 				496E4C6C20D24D5700A133AD /* Main.storyboard */,
 				496E4C6F20D24D5900A133AD /* Assets.xcassets */,
 				496E4C7120D24D5900A133AD /* LaunchScreen.storyboard */,
@@ -220,6 +232,8 @@
 		49BA6D2A20D2BD9C00296945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D6A20D4E75500296945 /* SwiftyBeaver.framework */,
+				49BA6D6820D4E09700296945 /* Toaster.framework */,
 				49BA6D2B20D2BD9C00296945 /* Realm.framework */,
 				49BA6D2C20D2BD9C00296945 /* RealmSwift.framework */,
 			);
@@ -256,6 +270,14 @@
 				49BA6D6420D2EABF00296945 /* MainFlowController.swift */,
 			);
 			path = FlowControllers;
+			sourceTree = "<group>";
+		};
+		49BA6D6E20D4E8FB00296945 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D6F20D4E90600296945 /* SuggestionStore.swift */,
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,11 +387,15 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Toaster.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -401,8 +427,10 @@
 				49BA6D4A20D2C3BD00296945 /* DictionaryExtensions.swift in Sources */,
 				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,
 				49BA6D5C20D2D92300296945 /* Bindable.swift in Sources */,
+				49BA6D7020D4E90600296945 /* SuggestionStore.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
 				49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */,
+				49BA6D6D20D4E78300296945 /* Log.swift in Sources */,
 				49BA6D3F20D2BF7200296945 /* SuggestionEntity.swift in Sources */,
 				49BA6D5720D2D65F00296945 /* SearchViewModel.swift in Sources */,
 				49BA6D4E20D2C43D00296945 /* Completion.swift in Sources */,

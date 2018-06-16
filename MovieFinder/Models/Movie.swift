@@ -17,7 +17,7 @@ struct Movie: Codable {
         case overview
     }
 
-    let posterUrl: URL
+    let posterUrl: URL?
     let name: String
     let release: String
     let overview: String

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Toaster
 
 // MARK: - SearchViewController declaration
 final class SearchViewController: UIViewController {
@@ -52,6 +53,7 @@ private extension SearchViewController {
     func _bind() {
         _viewModel.searchStatus.bind { [weak self] status in
             self?._searchButton.isEnabled = true
+            self?._searchTextField.isEnabled = true
 
             switch status {
             case .notStarted: break
@@ -67,6 +69,7 @@ private extension SearchViewController {
                 }
 
             case .inProgress:
+                self?._searchTextField.isEnabled = false
                 self?._searchButton.isEnabled = false
             }
         }
@@ -78,21 +81,7 @@ private extension SearchViewController {
     }
 
     func _handleError(_ error: AppErrorType) {
-        let okAction = UIAlertAction(
-            title: "Ok",
-            style: .default,
-            handler: nil
-        )
-
-        let controller = UIAlertController(
-            title: nil,
-            message: error.description,
-            preferredStyle: .alert
-        )
-
-        controller.addAction(okAction)
-
-        present(controller, animated: true, completion: nil)
+        Toast(text: error.description).show()
     }
 }
 
@@ -106,12 +95,22 @@ private extension SearchViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        _didPressSearchButton()
+        return true
+    }
+}
+
 // MARK: - Builders
 private extension SearchViewController {
     func _makeSearchTextField() -> UITextField {
         let textField = UITextField(frame: .zero)
         textField.placeholder = "Enter a movie name..."
         textField.borderStyle = .roundedRect
+        textField.returnKeyType = .search
+        textField.delegate = self
 
         view.addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false

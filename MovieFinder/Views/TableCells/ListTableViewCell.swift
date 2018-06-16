@@ -8,9 +8,18 @@
 
 import Foundation
 import UIKit
+import Kingfisher
+
+// MARK: - ListCellDisplayable declaration
+protocol ListCellDisplayable {
+    var title: String { get }
+    var thubmnailUrl: URL { get }
+    var description: String { get }
+    var subtitle: String { get }
+}
 
 // MARK: - ListTableViewCell declaration
-final class ListTableViewCell: UITableViewCell {
+final class ListTableViewCell: UITableViewCell, ReusableView {
 
     // MARK: - Properties
     // MARK: Private properties
@@ -18,4 +27,25 @@ final class ListTableViewCell: UITableViewCell {
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var subtitleLabel: UILabel!
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
+
+    // MARK: - Public methods
+    // MARK: Overrides
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImageView.kf.cancelDownloadTask()
+        thumbnailImageView.image = nil
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        thumbnailImageView.kf.indicatorType = .activity
+    }
+
+    // MARK: Set item
+    func set(_ item: ListCellDisplayable) {
+        thumbnailImageView.kf.setImage(with: item.thubmnailUrl, options: [.transition(.fade(0.2))])
+        titleLabel.text = item.title
+        subtitleLabel.text = item.subtitle
+        descriptionLabel.text = item.description
+    }
 }

@@ -45,6 +45,8 @@
 		49BA6D7620D4EEF300296945 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7520D4EEF300296945 /* ListTableViewCell.swift */; };
 		49BA6D7820D4EEFE00296945 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49BA6D7720D4EEFE00296945 /* ListTableViewCell.xib */; };
 		49BA6D7A20D4F0A200296945 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D7920D4F0A200296945 /* Kingfisher.framework */; };
+		49BA6D7C20D4F41200296945 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7B20D4F41200296945 /* ReusableView.swift */; };
+		49BA6D7E20D4F44A00296945 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7D20D4F44A00296945 /* UITableViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		49BA6D7520D4EEF300296945 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		49BA6D7720D4EEFE00296945 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		49BA6D7920D4F0A200296945 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		49BA6D7B20D4F41200296945 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		49BA6D7D20D4F44A00296945 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 				49BA6D3720D2BF0100296945 /* Realm+Store.swift */,
 				49BA6D4920D2C3BD00296945 /* DictionaryExtensions.swift */,
 				49BA6D5420D2D41B00296945 /* Endpoint+All.swift */,
+				49BA6D7D20D4F44A00296945 /* UITableViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				49BA6D4320D2C27A00296945 /* APIConnectable.swift */,
 				49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */,
 				49BA6D6620D2EB8800296945 /* FlowController.swift */,
+				49BA6D7B20D4F41200296945 /* ReusableView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -462,12 +468,14 @@
 				49BA6D7220D4EDC900296945 /* ListViewController.swift in Sources */,
 				49BA6D7020D4E90600296945 /* SuggestionStore.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
+				49BA6D7C20D4F41200296945 /* ReusableView.swift in Sources */,
 				49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */,
 				49BA6D6D20D4E78300296945 /* Log.swift in Sources */,
 				49BA6D3F20D2BF7200296945 /* SuggestionEntity.swift in Sources */,
 				49BA6D5720D2D65F00296945 /* SearchViewModel.swift in Sources */,
 				49BA6D4E20D2C43D00296945 /* Completion.swift in Sources */,
 				49BA6D3D20D2BF6B00296945 /* Movie.swift in Sources */,
+				49BA6D7E20D4F44A00296945 /* UITableViewExtensions.swift in Sources */,
 				49BA6D6720D2EB8800296945 /* FlowController.swift in Sources */,
 				49BA6D4C20D2C3E600296945 /* DictionaryConvertible.swift in Sources */,
 				49BA6D4420D2C27A00296945 /* APIConnectable.swift in Sources */,

@@ -25,15 +25,16 @@ extension ListViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension ListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell: ListTableViewCell = tableView.dequeueReusableCell()
+        return cell
     }
 }
 
@@ -47,6 +48,8 @@ private extension ListViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.setupAutomaticDimension(to: 200)
+        tableView.registerCell(ListTableViewCell.self)
 
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false

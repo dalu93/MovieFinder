@@ -22,7 +22,7 @@ final class SearchView: UIView, ReusableView {
 
     var didSearch: ((String) -> Void)?
     var currentKeyword: String {
-        return textField.text ?? ""
+        return _currentKeyword
     }
 
     var height: CGFloat {
@@ -39,10 +39,15 @@ final class SearchView: UIView, ReusableView {
 
     // MARK: Private properties
     fileprivate let _expandedTableViewHeight: CGFloat = SuggestionTableViewCell.height * 3
+    fileprivate var _currentKeyword = "" {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     fileprivate var _filteredSuggestions: [Suggestion] {
         return suggestions.filter {
-            let typedKeyword = textField.text ?? ""
-            return $0.keyword.hasPrefix(typedKeyword) && $0.keyword != typedKeyword
+            return $0.keyword.lowercased().hasPrefix(_currentKeyword.lowercased()) &&
+                $0.keyword.lowercased() != _currentKeyword.lowercased()
         }
     }
 
@@ -52,17 +57,6 @@ final class SearchView: UIView, ReusableView {
     fileprivate var tableHeightConstraint: NSLayoutConstraint!
 
     // MARK: - Public methods
-    func clearText() {
-        textField.text = ""
-    }
-
-    // MARK: - Private methods
-    fileprivate func _startSearch(using keyword: String) {
-        textField.resignFirstResponder()
-        tableHeightConstraint.constant = 0
-        didSearch?(keyword)
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         _setupUI()
@@ -72,9 +66,22 @@ final class SearchView: UIView, ReusableView {
         return textField.becomeFirstResponder()
     }
 
+    func clearText() {
+        textField.text = ""
+        _currentKeyword = ""
+    }
+
+    // MARK: - Private methods
+    fileprivate func _startSearch(using keyword: String) {
+        textField.resignFirstResponder()
+        tableHeightConstraint.constant = 0
+        didSearch?(keyword)
+    }
+
     private func _setupUI() {
         _ = textField
         _ = tableView
+        tableView.reloadData()
     }
 }
 
@@ -95,10 +102,13 @@ extension SearchView: UITextFieldDelegate {
         return true
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let text = (textField.text as NSString?)!.replacingCharacters(in: range, with: string)
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        _currentKeyword = (textField.text as NSString?)!.replacingCharacters(in: range, with: string)
 
-        tableView.reloadData()
         if _filteredSuggestions.isEmpty {
             tableHeightConstraint.constant = 0
         } else {
@@ -124,7 +134,7 @@ extension SearchView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let suggestion = suggestions.get(at: indexPath.row) else {
+        guard let suggestion = _filteredSuggestions.get(at: indexPath.row) else {
             return UITableViewCell()
         }
 
@@ -137,7 +147,7 @@ extension SearchView: UITableViewDataSource {
 // MARK: - <#UITableViewDelegate#>
 extension SearchView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let suggestion = suggestions.get(at: indexPath.row) else { return }
+        guard let suggestion = _filteredSuggestions.get(at: indexPath.row) else { return }
         textField.text = suggestion.keyword
         _startSearch(using: suggestion.keyword)
     }

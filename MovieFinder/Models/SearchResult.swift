@@ -47,13 +47,6 @@ extension SearchResult: Equatable {
     }
 }
 
-// MARK: - <#Hashable#>
-extension SearchResult: Hashable {
-    var hashValue: Int {
-        return Int("\(page)\(totalPages)\(totalResults)")!
-    }
-}
-
 // MARK: - API
 extension SearchResult {
     static func get<APIService: APIConnectable>(

@@ -37,7 +37,7 @@ final class MainFlowController: FlowController {
     }
 
     func show(_ result: SearchResult, using keyword: String) {
-        let listViewModel = ListViewModel<APIService>.init(
+        let listViewModel = ListViewModel<APIService>(
             service: dependencies.apiService,
             keyword: keyword,
             searchResult: result

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,33 +19,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p4-jH-k5J">
-                        <rect key="frame" x="26" y="11" width="323" height="20.5"/>
+                        <rect key="frame" x="25" y="0.0" width="350" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IK4-Pu-gAq" userLabel="Separator">
-                        <rect key="frame" x="0.0" y="42.5" width="375" height="1"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="history_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2By-S5-5g1">
+                        <rect key="frame" x="0.0" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="K1s-xd-d3l"/>
+                            <constraint firstAttribute="height" constant="20" id="fMW-iP-yAn"/>
+                            <constraint firstAttribute="width" constant="20" id="wJk-bv-tCX"/>
                         </constraints>
-                    </view>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="IK4-Pu-gAq" firstAttribute="top" secondItem="2p4-jH-k5J" secondAttribute="bottom" constant="11" id="0xt-tQ-z9D"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="2p4-jH-k5J" secondAttribute="trailing" constant="10" id="44a-gE-Ppi"/>
-                    <constraint firstAttribute="bottom" secondItem="IK4-Pu-gAq" secondAttribute="bottom" id="BH9-hg-cKt"/>
-                    <constraint firstItem="2p4-jH-k5J" firstAttribute="leading" secondItem="X4Y-Gu-932" secondAttribute="leadingMargin" constant="10" id="Dpk-6W-R6d"/>
-                    <constraint firstAttribute="trailing" secondItem="IK4-Pu-gAq" secondAttribute="trailing" id="bIe-FB-8gv"/>
-                    <constraint firstItem="2p4-jH-k5J" firstAttribute="top" secondItem="X4Y-Gu-932" secondAttribute="topMargin" id="l8i-bh-lk2"/>
-                    <constraint firstItem="IK4-Pu-gAq" firstAttribute="leading" secondItem="X4Y-Gu-932" secondAttribute="leading" id="y2u-Vj-7Uq"/>
+                    <constraint firstItem="2By-S5-5g1" firstAttribute="centerY" secondItem="X4Y-Gu-932" secondAttribute="centerY" id="60W-qN-guJ"/>
+                    <constraint firstItem="2p4-jH-k5J" firstAttribute="leading" secondItem="2By-S5-5g1" secondAttribute="trailing" constant="5" id="BRk-Az-wNL"/>
+                    <constraint firstItem="2By-S5-5g1" firstAttribute="leading" secondItem="X4Y-Gu-932" secondAttribute="leading" id="BUh-Qm-cIN"/>
+                    <constraint firstAttribute="bottom" secondItem="2p4-jH-k5J" secondAttribute="bottom" id="CEz-14-633"/>
+                    <constraint firstItem="2p4-jH-k5J" firstAttribute="top" secondItem="X4Y-Gu-932" secondAttribute="top" id="Exg-nI-MD1"/>
+                    <constraint firstAttribute="trailing" secondItem="2p4-jH-k5J" secondAttribute="trailing" id="Q61-io-iRb"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="suggestionLabel" destination="2p4-jH-k5J" id="xXQ-f0-blX"/>
             </connections>
             <point key="canvasLocation" x="38" y="5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="history_icon" width="96" height="96"/>
+    </resources>
 </document>

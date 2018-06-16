@@ -62,7 +62,8 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
             using: _service
         ) { [weak self] result in
             self?.searchStatus.value = .completed(result)
-            if result.isSuccess {
+            if let searchResult = result.value,
+                searchResult.totalResults > 0 {
                 self?._save(keyword)
             }
         }
@@ -71,7 +72,7 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     }
 
     func showResult(for searchResult: SearchResult, keyword: String) {
-        guard searchResult.results.count > 0 else {
+        guard searchResult.results.isEmpty == false else {
             searchStatus.value = .completed(.failed(AppError.Search.noResults))
             return
         }
@@ -81,7 +82,7 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
 
     // MARK: Private methods
     private func _isKeywordValid(_ keyword: String) -> Bool {
-        return keyword.count > 0
+        return keyword.isEmpty == false
     }
 
     private func _save(_ keyword: String) {

@@ -102,8 +102,7 @@ private extension SearchViewController {
         )
     }
 
-    func _startSearch() {
-        let keyword = _searchView.currentKeyword
+    func _startSearch(using keyword: String) {
         _viewModel.search(for: keyword)
     }
 
@@ -121,8 +120,8 @@ private extension SearchViewController {
     }
 
     @objc func _keyboardWillDisplay() {
-        _searchViewTopAnchorConstraint.isActive = true
         _searchViewCenterYAnchorConstraint.isActive = false
+        _searchViewTopAnchorConstraint.isActive = true
     }
 
     @objc func _keyboardWillHide() {
@@ -135,8 +134,8 @@ private extension SearchViewController {
 private extension SearchViewController {
     func _makeSearchView() -> SearchView {
         let searchView = SearchView(frame: .zero)
-        searchView.didSearch = { [weak self] _ in
-            self?._startSearch()
+        searchView.didSearch = { [weak self] keyword in
+            self?._startSearch(using: keyword)
         }
 
         searchView.translatesAutoresizingMaskIntoConstraints = false
@@ -159,7 +158,6 @@ private extension SearchViewController {
         _searchViewCenterYAnchorConstraint = searchView.centerYAnchor.constraint(
             equalTo: view.safeAreaLayoutGuide.centerYAnchor
         )
-
         _searchViewCenterYAnchorConstraint.isActive = true
 
         _searchViewTopAnchorConstraint = searchView.topAnchor.constraint(

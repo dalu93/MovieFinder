@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupLogger()
         let apiService = APIService(
             baseAPIURL: "http://api.themoviedb.org/3",
+            imageUrlProvider: TMDBImageUrlProvider(),
             sessionConfiguration: .default
         )
 
@@ -40,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
         )
 
-        let startController = flowController.startController
+        let startController = flowController.getInitialController()
         window!.rootViewController = startController
         window!.makeKeyAndVisible()
 

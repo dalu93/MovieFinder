@@ -47,6 +47,12 @@
 		49BA6D7A20D4F0A200296945 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D7920D4F0A200296945 /* Kingfisher.framework */; };
 		49BA6D7C20D4F41200296945 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7B20D4F41200296945 /* ReusableView.swift */; };
 		49BA6D7E20D4F44A00296945 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7D20D4F44A00296945 /* UITableViewExtensions.swift */; };
+		49BA6D8020D4F52700296945 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7F20D4F52700296945 /* ListViewModel.swift */; };
+		49BA6D8220D4F7BE00296945 /* ListCellDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D8120D4F7BE00296945 /* ListCellDisplayable.swift */; };
+		49BA6D8420D4FD8600296945 /* ListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D8320D4FD8600296945 /* ListFooterView.swift */; };
+		49BA6D8620D503AF00296945 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D8520D503AF00296945 /* ArrayExtensions.swift */; };
+		49BA6D8820D5098400296945 /* ImageUrlProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D8720D5098400296945 /* ImageUrlProviderType.swift */; };
+		49BA6D8A20D50B7500296945 /* TMDBImageUrlProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D8920D50B7500296945 /* TMDBImageUrlProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +110,12 @@
 		49BA6D7920D4F0A200296945 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		49BA6D7B20D4F41200296945 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		49BA6D7D20D4F44A00296945 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		49BA6D7F20D4F52700296945 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		49BA6D8120D4F7BE00296945 /* ListCellDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellDisplayable.swift; sourceTree = "<group>"; };
+		49BA6D8320D4FD8600296945 /* ListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFooterView.swift; sourceTree = "<group>"; };
+		49BA6D8520D503AF00296945 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		49BA6D8720D5098400296945 /* ImageUrlProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlProviderType.swift; sourceTree = "<group>"; };
+		49BA6D8920D50B7500296945 /* TMDBImageUrlProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBImageUrlProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +200,7 @@
 				49BA6D4920D2C3BD00296945 /* DictionaryExtensions.swift */,
 				49BA6D5420D2D41B00296945 /* Endpoint+All.swift */,
 				49BA6D7D20D4F44A00296945 /* UITableViewExtensions.swift */,
+				49BA6D8520D503AF00296945 /* ArrayExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +215,8 @@
 				49BA6D4B20D2C3E600296945 /* DictionaryConvertible.swift */,
 				49BA6D6620D2EB8800296945 /* FlowController.swift */,
 				49BA6D7B20D4F41200296945 /* ReusableView.swift */,
+				49BA6D8120D4F7BE00296945 /* ListCellDisplayable.swift */,
+				49BA6D8720D5098400296945 /* ImageUrlProviderType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -233,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				49BA6D5620D2D65F00296945 /* SearchViewModel.swift */,
+				49BA6D7F20D4F52700296945 /* ListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -270,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				49BA6D5020D2C8C100296945 /* APIService.swift */,
+				49BA6D8920D50B7500296945 /* TMDBImageUrlProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -302,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				49BA6D7420D4EEE000296945 /* TableCells */,
+				49BA6D8320D4FD8600296945 /* ListFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -461,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BA6D5120D2C8C100296945 /* APIService.swift in Sources */,
+				49BA6D8820D5098400296945 /* ImageUrlProviderType.swift in Sources */,
 				49BA6D4820D2C2ED00296945 /* Resource.swift in Sources */,
 				49BA6D4A20D2C3BD00296945 /* DictionaryExtensions.swift in Sources */,
 				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,
@@ -468,9 +487,11 @@
 				49BA6D7220D4EDC900296945 /* ListViewController.swift in Sources */,
 				49BA6D7020D4E90600296945 /* SuggestionStore.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
+				49BA6D8A20D50B7500296945 /* TMDBImageUrlProvider.swift in Sources */,
 				49BA6D7C20D4F41200296945 /* ReusableView.swift in Sources */,
 				49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */,
 				49BA6D6D20D4E78300296945 /* Log.swift in Sources */,
+				49BA6D8620D503AF00296945 /* ArrayExtensions.swift in Sources */,
 				49BA6D3F20D2BF7200296945 /* SuggestionEntity.swift in Sources */,
 				49BA6D5720D2D65F00296945 /* SearchViewModel.swift in Sources */,
 				49BA6D4E20D2C43D00296945 /* Completion.swift in Sources */,
@@ -486,9 +507,12 @@
 				49BA6D7620D4EEF300296945 /* ListTableViewCell.swift in Sources */,
 				49BA6D3620D2BECA00296945 /* AppError.swift in Sources */,
 				49BA6D4620D2C29700296945 /* HTTPMethod.swift in Sources */,
+				49BA6D8220D4F7BE00296945 /* ListCellDisplayable.swift in Sources */,
 				49BA6D3420D2BE7800296945 /* Storeable.swift in Sources */,
 				496E4C6920D24D5700A133AD /* AppDelegate.swift in Sources */,
 				49BA6D3220D2BE7800296945 /* Entity.swift in Sources */,
+				49BA6D8420D4FD8600296945 /* ListFooterView.swift in Sources */,
+				49BA6D8020D4F52700296945 /* ListViewModel.swift in Sources */,
 				49BA6D5520D2D41B00296945 /* Endpoint+All.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

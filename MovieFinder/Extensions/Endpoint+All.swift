@@ -17,7 +17,7 @@ extension Endpoint {
     ) -> Endpoint {
         var parameters: [Parameter] = []
         parameters.append(Parameter(field: "query", value: keyword))
-        parameters.append(Parameter(field: "page", value: page))
+        parameters.append(Parameter(field: "page", value: "\(page)"))
         parameters.append(Parameter(field: "api_key", value: apiKey))
 
         return Endpoint(

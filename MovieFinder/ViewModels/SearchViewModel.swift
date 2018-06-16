@@ -57,13 +57,13 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
         searchStatus.value = .inProgress(request)
     }
 
-    func showResult(for searchResult: SearchResult) {
+    func showResult(for searchResult: SearchResult, keyword: String) {
         guard searchResult.results.count > 0 else {
             searchStatus.value = .completed(.failed(AppError.Search.noResults))
             return
         }
 
-        _flowController.show(searchResult)
+        _flowController.show(searchResult, using: keyword)
     }
 
     // MARK: Private methods

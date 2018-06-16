@@ -11,6 +11,7 @@ import Foundation
 // MARK: - APIService declaration
 struct APIService: APIConnectable {
     let baseAPIURL: String
+    let imageUrlProvider: TMDBImageUrlProvider
     let sessionConfiguration: URLSessionConfiguration
 
     func load<Object>(

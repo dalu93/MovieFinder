@@ -13,4 +13,11 @@ enum ConnectionStatus<Request, Value> {
     case notStarted
     case inProgress(Request)
     case completed(Completion<Value>)
+
+    var isInProgress: Bool {
+        switch self {
+        case .inProgress:               return true
+        case .notStarted, .completed:   return false
+        }
+    }
 }

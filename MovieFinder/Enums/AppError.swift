@@ -44,4 +44,26 @@ enum AppError {
             }
         }
     }
+
+    enum List: AppErrorType {
+        case loadingNextPageFailed
+
+        var description: String {
+            switch self {
+            case .loadingNextPageFailed:
+                return "An error occurred. Tap to retry"
+            }
+        }
+    }
+
+    enum Store: AppErrorType {
+        case alreadyExists
+
+        var description: String {
+            switch self {
+            case .alreadyExists:
+                return "The item already exists in database"
+            }
+        }
+    }
 }

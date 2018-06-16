@@ -22,7 +22,6 @@ struct SearchResult: Codable {
     let totalResults: Int
     let totalPages: Int
     let results: [Movie]
-    fileprivate(set) var keyword: String = ""
 }
 
 // MARK: - JSONRepresentable
@@ -38,6 +37,23 @@ extension SearchResult: JSONRepresentable {
     }
 }
 
+// MARK: - <#Equatable#>
+extension SearchResult: Equatable {
+    static func == (lhs: SearchResult, rhs: SearchResult) -> Bool {
+        return lhs.page == rhs.page &&
+            lhs.totalPages == rhs.totalPages &&
+            lhs.totalResults == rhs.totalResults &&
+            lhs.results == rhs.results
+    }
+}
+
+// MARK: - <#Hashable#>
+extension SearchResult: Hashable {
+    var hashValue: Int {
+        return Int("\(page)\(totalPages)\(totalResults)")!
+    }
+}
+
 // MARK: - API
 extension SearchResult {
     static func get<APIService: APIConnectable>(
@@ -49,26 +65,12 @@ extension SearchResult {
         let resource = Resource<SearchResult>(
             endpoint: Endpoint.search(using: keyword, at: page),
             parse: { data in
-                var result = try SearchResult(with: data)
-                result.keyword = keyword
-                return result
+                return try SearchResult(with: data)
             }
         )
 
         return service.load(
             resource: resource,
-            completion: completion
-        )
-    }
-
-    func nextPage<APIService: APIConnectable>(
-        using service: APIService,
-        completion: @escaping ((Completion<SearchResult>) -> Void)
-    ) {
-        _ = SearchResult.get(
-            with: keyword,
-            at: page + 1,
-            using: service,
             completion: completion
         )
     }

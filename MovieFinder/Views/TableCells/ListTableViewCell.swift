@@ -10,14 +10,6 @@ import Foundation
 import UIKit
 import Kingfisher
 
-// MARK: - ListCellDisplayable declaration
-protocol ListCellDisplayable {
-    var title: String { get }
-    var thubmnailUrl: URL { get }
-    var description: String { get }
-    var subtitle: String { get }
-}
-
 // MARK: - ListTableViewCell declaration
 final class ListTableViewCell: UITableViewCell, ReusableView {
 
@@ -39,13 +31,14 @@ final class ListTableViewCell: UITableViewCell, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbnailImageView.kf.indicatorType = .activity
+        selectionStyle = .none
     }
 
     // MARK: Set item
     func set(_ item: ListCellDisplayable) {
         thumbnailImageView.kf.setImage(with: item.thubmnailUrl, options: [.transition(.fade(0.2))])
         titleLabel.text = item.title
-        subtitleLabel.text = item.subtitle
+        subtitleLabel.text = "Release date: " + item.subtitle
         descriptionLabel.text = item.description
     }
 }

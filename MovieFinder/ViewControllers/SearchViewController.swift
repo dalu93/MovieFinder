@@ -39,6 +39,11 @@ extension SearchViewController {
         _setupUI()
         _bind()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        _searchTextField.resignFirstResponder()
+    }
 }
 
 // MARK: - Actions from UI
@@ -52,8 +57,9 @@ private extension SearchViewController {
 private extension SearchViewController {
     func _bind() {
         _viewModel.searchStatus.bind { [weak self] status in
-            self?._searchButton.isEnabled = true
-            self?._searchTextField.isEnabled = true
+            guard let `self` = self else { return }
+            self._searchButton.isEnabled = true
+            self._searchTextField.isEnabled = true
 
             switch status {
             case .notStarted: break
@@ -61,16 +67,16 @@ private extension SearchViewController {
                 if let error = result.error,
                     let appError = error as? AppErrorType {
 
-                    self?._handleError(appError)
+                    self._handleError(appError)
                 } else if let value = result.value {
-                    self?._viewModel.showResult(for: value)
+                    self._viewModel.showResult(for: value, keyword: self._searchTextField.text!)
                 } else {
                     fatalError("[DEV ERROR] No value or valid error was returned")
                 }
 
             case .inProgress:
-                self?._searchTextField.isEnabled = false
-                self?._searchButton.isEnabled = false
+                self._searchTextField.isEnabled = false
+                self._searchButton.isEnabled = false
             }
         }
     }

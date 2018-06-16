@@ -18,6 +18,10 @@ struct SuggestionStore: Store {
     // MARK: - Methods
     // MARK: Public methods
     func save(_ object: SuggestionEntity) throws {
+        guard realm.object(ofType: SuggestionEntity.self, forPrimaryKey: object.keyword) == nil else {
+            throw AppError.Store.alreadyExists
+        }
+
         try realm.save(object)
     }
 

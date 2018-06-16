@@ -10,7 +10,9 @@ import Foundation
 
 protocol APIConnectable {
     associatedtype RequestType
+    associatedtype ImageUrlProvider: ImageUrlProviderType
 
     var baseAPIURL: String { get }
+    var imageUrlProvider: ImageUrlProvider { get }
     func load<Object>(resource: Resource<Object>, completion: @escaping (Completion<Object>) -> Void) -> RequestType
 }

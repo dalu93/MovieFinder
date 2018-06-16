@@ -11,13 +11,13 @@ import Foundation
 // MARK: - Movie declaration
 struct Movie: Codable {
     enum CodingKeys: String, CodingKey {
-        case posterUrl = "poster_path"
+        case posterPath = "poster_path"
         case name = "title"
         case release = "release_date"
         case overview
     }
 
-    let posterUrl: URL?
+    let posterPath: String?
     let name: String
     let release: String
     let overview: String
@@ -33,5 +33,27 @@ extension Movie: JSONRepresentable {
 
     func jsonData() throws -> Data {
         return try JSONEncoder().encode(self)
+    }
+}
+
+// MARK: - <#ListItemConvertible#>
+extension Movie: ListItemConvertible {
+    var listItem: ListItem {
+        return ListItem(
+            title: name,
+            thubmnailUrl: nil,
+            description: overview,
+            subtitle: release
+        )
+    }
+}
+
+// MARK: - <#Equatable#>
+extension Movie: Equatable {
+    static func == (lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.posterPath == rhs.posterPath &&
+            lhs.name == rhs.name &&
+            lhs.release == rhs.release &&
+            lhs.overview == rhs.overview
     }
 }

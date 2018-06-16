@@ -10,26 +10,40 @@ import Foundation
 import UIKit
 
 // MARK: - MainFlowController declaration
-struct MainFlowController: FlowController {
+final class MainFlowController: FlowController {
     struct DependencyGroup {
         let apiService: APIService
         let suggestionStore: SuggestionStore
     }
 
     let dependencies: DependencyGroup
+    init(dependencies: DependencyGroup) {
+        self.dependencies = dependencies
+    }
 
-    var startController: UIViewController {
+    private weak var _navigationController: UINavigationController?
+
+    func getInitialController() -> UIViewController {
         let viewModel = SearchViewModel<APIService>(
             service: dependencies.apiService,
             flowController: self,
             suggestionStore: dependencies.suggestionStore
         )
-        return UINavigationController(
+        _navigationController = UINavigationController(
             rootViewController: SearchViewController(viewModel)
         )
+
+        return _navigationController!
     }
 
-    func show(_ result: SearchResult) {
-        dump(result)
+    func show(_ result: SearchResult, using keyword: String) {
+        let listViewModel = ListViewModel<APIService>.init(
+            service: dependencies.apiService,
+            keyword: keyword,
+            searchResult: result
+        )
+
+        let listViewController = ListViewController(listViewModel)
+        _navigationController?.pushViewController(listViewController, animated: true)
     }
 }

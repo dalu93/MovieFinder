@@ -41,6 +41,10 @@
 		49BA6D6B20D4E75500296945 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D6A20D4E75500296945 /* SwiftyBeaver.framework */; };
 		49BA6D6D20D4E78300296945 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6C20D4E78300296945 /* Log.swift */; };
 		49BA6D7020D4E90600296945 /* SuggestionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D6F20D4E90600296945 /* SuggestionStore.swift */; };
+		49BA6D7220D4EDC900296945 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7120D4EDC900296945 /* ListViewController.swift */; };
+		49BA6D7620D4EEF300296945 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6D7520D4EEF300296945 /* ListTableViewCell.swift */; };
+		49BA6D7820D4EEFE00296945 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49BA6D7720D4EEFE00296945 /* ListTableViewCell.xib */; };
+		49BA6D7A20D4F0A200296945 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6D7920D4F0A200296945 /* Kingfisher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,10 @@
 		49BA6D6A20D4E75500296945 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		49BA6D6C20D4E78300296945 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		49BA6D6F20D4E90600296945 /* SuggestionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionStore.swift; sourceTree = "<group>"; };
+		49BA6D7120D4EDC900296945 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		49BA6D7520D4EEF300296945 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		49BA6D7720D4EEFE00296945 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		49BA6D7920D4F0A200296945 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BA6D7A20D4F0A200296945 /* Kingfisher.framework in Frameworks */,
 				49BA6D2D20D2BD9C00296945 /* Realm.framework in Frameworks */,
 				49BA6D2E20D2BD9C00296945 /* RealmSwift.framework in Frameworks */,
 				49BA6D6B20D4E75500296945 /* SwiftyBeaver.framework in Frameworks */,
@@ -138,6 +147,7 @@
 		496E4C6720D24D5700A133AD /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D7320D4EEDA00296945 /* Views */,
 				49BA6D6E20D4E8FB00296945 /* Stores */,
 				49BA6D6320D2EAAB00296945 /* FlowControllers */,
 				49BA6D5A20D2D91700296945 /* Utilities */,
@@ -225,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				49BA6D5D20D2DC8900296945 /* SearchViewController.swift */,
+				49BA6D7120D4EDC900296945 /* ListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +243,7 @@
 		49BA6D2A20D2BD9C00296945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6D7920D4F0A200296945 /* Kingfisher.framework */,
 				49BA6D6A20D4E75500296945 /* SwiftyBeaver.framework */,
 				49BA6D6820D4E09700296945 /* Toaster.framework */,
 				49BA6D2B20D2BD9C00296945 /* Realm.framework */,
@@ -278,6 +290,23 @@
 				49BA6D6F20D4E90600296945 /* SuggestionStore.swift */,
 			);
 			path = Stores;
+			sourceTree = "<group>";
+		};
+		49BA6D7320D4EEDA00296945 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D7420D4EEE000296945 /* TableCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49BA6D7420D4EEE000296945 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6D7520D4EEF300296945 /* ListTableViewCell.swift */,
+				49BA6D7720D4EEFE00296945 /* ListTableViewCell.xib */,
+			);
+			path = TableCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496E4C7320D24D5900A133AD /* LaunchScreen.storyboard in Resources */,
+				49BA6D7820D4EEFE00296945 /* ListTableViewCell.xib in Resources */,
 				496E4C7020D24D5900A133AD /* Assets.xcassets in Resources */,
 				496E4C6E20D24D5700A133AD /* Main.storyboard in Resources */,
 			);
@@ -389,6 +419,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -396,6 +427,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Toaster.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyBeaver.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -427,6 +459,7 @@
 				49BA6D4A20D2C3BD00296945 /* DictionaryExtensions.swift in Sources */,
 				49BA6D3820D2BF0100296945 /* Realm+Store.swift in Sources */,
 				49BA6D5C20D2D92300296945 /* Bindable.swift in Sources */,
+				49BA6D7220D4EDC900296945 /* ListViewController.swift in Sources */,
 				49BA6D7020D4E90600296945 /* SuggestionStore.swift in Sources */,
 				49BA6D3320D2BE7800296945 /* JSONRepresentable.swift in Sources */,
 				49BA6D6520D2EABF00296945 /* MainFlowController.swift in Sources */,
@@ -442,6 +475,7 @@
 				49BA6D5E20D2DC8900296945 /* SearchViewController.swift in Sources */,
 				49BA6D3C20D2BF6B00296945 /* Suggestion.swift in Sources */,
 				49BA6D5920D2D7BC00296945 /* ConnectionStatus.swift in Sources */,
+				49BA6D7620D4EEF300296945 /* ListTableViewCell.swift in Sources */,
 				49BA6D3620D2BECA00296945 /* AppError.swift in Sources */,
 				49BA6D4620D2C29700296945 /* HTTPMethod.swift in Sources */,
 				49BA6D3420D2BE7800296945 /* Storeable.swift in Sources */,

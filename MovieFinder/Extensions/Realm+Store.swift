@@ -32,4 +32,8 @@ extension Realm: Store {
     func deletePermanently(_ object: RealmSwift.Object) throws {
         self.delete(object)
     }
+
+    func all() throws -> [Object] {
+        return Array(self.objects(Object.self))
+    }
 }

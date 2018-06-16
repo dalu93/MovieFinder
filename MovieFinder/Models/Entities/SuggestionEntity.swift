@@ -12,7 +12,8 @@ import Realm
 
 // MARK: - SuggestionEntity declaration
 final class SuggestionEntity: Object {
-    @objc var keyword: String = ""
+    @objc dynamic var keyword: String = ""
+    @objc dynamic var createdAt: Date = Date()
 
     override static func primaryKey() -> String {
         return "keyword"

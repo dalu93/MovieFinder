@@ -18,8 +18,10 @@ final class SearchViewController: UIViewController {
     fileprivate let _viewModel: ViewModel
 
     // MARK: Private outlets
-    fileprivate lazy var _searchTextField: UITextField = self._makeSearchTextField()
-    fileprivate lazy var _searchButton: UIButton = self._makeSearchButton()
+    fileprivate lazy var _searchView: SearchView = self._makeSearchView()
+    fileprivate var _searchViewTopAnchorConstraint: NSLayoutConstraint!
+    fileprivate var _searchViewCenterYAnchorConstraint: NSLayoutConstraint!
+    fileprivate var _searchViewHeightAnchorConstraint: NSLayoutConstraint!
 
     // MARK: - Object lifecycle
     init(_ viewModel: ViewModel) {
@@ -38,18 +40,23 @@ extension SearchViewController {
         super.viewDidLoad()
         _setupUI()
         _bind()
+        _registerForKeyboardNotifications()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        _searchTextField.resignFirstResponder()
+        _searchView.clearText()
     }
-}
 
-// MARK: - Actions from UI
-private extension SearchViewController {
-    @objc func _didPressSearchButton() {
-        _startSearch()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        _searchView.suggestions = _viewModel.availableSuggestions
+        _ = _searchView.becomeFirstResponder()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        _searchViewHeightAnchorConstraint.constant = _searchView.height
     }
 }
 
@@ -58,8 +65,7 @@ private extension SearchViewController {
     func _bind() {
         _viewModel.searchStatus.bind { [weak self] status in
             guard let `self` = self else { return }
-            self._searchButton.isEnabled = true
-            self._searchTextField.isEnabled = true
+            self._searchView.isUserInteractionEnabled = true
 
             switch status {
             case .notStarted: break
@@ -69,20 +75,35 @@ private extension SearchViewController {
 
                     self._handleError(appError)
                 } else if let value = result.value {
-                    self._viewModel.showResult(for: value, keyword: self._searchTextField.text!)
+                    self._viewModel.showResult(for: value, keyword: self._searchView.currentKeyword)
                 } else {
                     fatalError("[DEV ERROR] No value or valid error was returned")
                 }
 
             case .inProgress:
-                self._searchTextField.isEnabled = false
-                self._searchButton.isEnabled = false
+                self._searchView.isUserInteractionEnabled = false
             }
         }
     }
 
+    func _registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_keyboardWillDisplay),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(_keyboardWillHide),
+            name: NSNotification.Name.UIKeyboardWillHide,
+            object: nil
+        )
+    }
+
     func _startSearch() {
-        let keyword = _searchTextField.text ?? ""
+        let keyword = _searchView.currentKeyword
         _viewModel.search(for: keyword)
     }
 
@@ -96,69 +117,61 @@ private extension SearchViewController {
     func _setupUI() {
         title = "Movie Finder"
         view.backgroundColor = .white
-        _ = _searchTextField
-        _ = _searchButton
+        _searchView.suggestions = _viewModel.availableSuggestions
     }
-}
 
-// MARK: - UITextFieldDelegate
-extension SearchViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        _didPressSearchButton()
-        return true
+    @objc func _keyboardWillDisplay() {
+        _searchViewTopAnchorConstraint.isActive = true
+        _searchViewCenterYAnchorConstraint.isActive = false
+    }
+
+    @objc func _keyboardWillHide() {
+        _searchViewTopAnchorConstraint.isActive = false
+        _searchViewCenterYAnchorConstraint.isActive = true
     }
 }
 
 // MARK: - Builders
 private extension SearchViewController {
-    func _makeSearchTextField() -> UITextField {
-        let textField = UITextField(frame: .zero)
-        textField.placeholder = "Enter a movie name..."
-        textField.borderStyle = .roundedRect
-        textField.returnKeyType = .search
-        textField.delegate = self
+    func _makeSearchView() -> SearchView {
+        let searchView = SearchView(frame: .zero)
+        searchView.didSearch = { [weak self] _ in
+            self?._startSearch()
+        }
 
-        view.addSubview(textField)
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        searchView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchView)
 
-        textField.leadingAnchor.constraint(
-            equalTo: view.leadingAnchor,
+        searchView.leadingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.leadingAnchor,
             constant: 20
         ).isActive = true
 
-        textField.trailingAnchor.constraint(
-            equalTo: view.trailingAnchor,
+        searchView.trailingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.trailingAnchor,
             constant: -20
         ).isActive = true
 
-        textField.centerXAnchor.constraint(
-            equalTo: view.centerXAnchor
+        searchView.centerXAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.centerXAnchor
         ).isActive = true
 
-        textField.centerYAnchor.constraint(
-            equalTo: view.centerYAnchor
-        ).isActive = true
-        return textField
-    }
-
-    func _makeSearchButton() -> UIButton {
-        let button = UIButton(frame: .zero)
-        button.addTarget(
-            self,
-            action: #selector(_didPressSearchButton),
-            for: .touchUpInside
+        _searchViewCenterYAnchorConstraint = searchView.centerYAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.centerYAnchor
         )
 
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle("Search", for: .normal)
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        _searchViewCenterYAnchorConstraint.isActive = true
 
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: _searchTextField.bottomAnchor, constant: 10).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        _searchViewTopAnchorConstraint = searchView.topAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.topAnchor,
+            constant: 10
+        )
 
-        return button
+        _searchViewHeightAnchorConstraint = searchView.heightAnchor.constraint(equalToConstant: 100)
+        _searchViewHeightAnchorConstraint.isActive = true
+
+        searchView.isUserInteractionEnabled = true
+
+        return searchView
     }
 }

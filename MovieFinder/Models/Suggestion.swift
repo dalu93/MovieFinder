@@ -9,8 +9,9 @@
 import Foundation
 
 // MARK: - Suggestion declaration
-struct Suggestion: Codable {
+struct Suggestion {
     let keyword: String
+    let createdAt: Date
 }
 
 // MARK: - EntityRepresentable
@@ -18,10 +19,12 @@ extension Suggestion: EntityRepresentable {
     var entity: SuggestionEntity {
         let entity = SuggestionEntity()
         entity.keyword = keyword
+        entity.createdAt = createdAt
         return entity
     }
 
     init(with entity: SuggestionEntity) {
         self.keyword = entity.keyword
+        self.createdAt = entity.createdAt
     }
 }

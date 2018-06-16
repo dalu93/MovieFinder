@@ -12,7 +12,9 @@ import Foundation
 protocol SearchViewModelType {
     associatedtype Result
     associatedtype Request
+    associatedtype SuggestionType
 
+    var availableSuggestions: [SuggestionType] { get }
     var searchStatus: Bindable<ConnectionStatus<Request, Result>> { get }
     func search(for keyword: String)
 }
@@ -21,6 +23,17 @@ protocol SearchViewModelType {
 final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     // MARK: - Properties
     // MARK: Public properties
+    var availableSuggestions: [Suggestion] {
+        do {
+            return try Array(_suggestionStore.all()
+                .map { Suggestion(with: $0) }
+                .sorted(by: { $0.createdAt > $1.createdAt })
+                .prefix(10))
+        } catch {
+            log.error("Failed to load suggestions from Realm. \(error)")
+            return []
+        }
+    }
     private(set) var searchStatus: Bindable<ConnectionStatus<APIService.RequestType, SearchResult>> = Bindable(.notStarted)
     // MARK: Private properties
     fileprivate let _service: APIService
@@ -72,7 +85,11 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     }
 
     private func _save(_ keyword: String) {
-        let suggestion = Suggestion(keyword: keyword)
+        let suggestion = Suggestion(
+            keyword: keyword,
+            createdAt: Date()
+        )
+
         let entity = suggestion.entity
         do {
             try self._suggestionStore.save(entity)

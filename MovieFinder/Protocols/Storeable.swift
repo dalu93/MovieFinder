@@ -13,6 +13,7 @@ import Foundation
 /// The basic actions are `save()` and `deletePermanently()`.
 protocol Store {
     associatedtype Object: Storeable
+    func all() throws -> [Object]
     func save(_ object: Object) throws
     func deletePermanently(_ object: Object) throws
 }

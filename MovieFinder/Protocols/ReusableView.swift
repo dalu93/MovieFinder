@@ -47,12 +47,19 @@ protocol ReusableView: NibConvertible, IdentifierConvertible {}
 
 // MARK: - UINib extension
 import UIKit
- extension UINib {
+extension UINib {
 
     static func nibFrom(string: String, bundle: Bundle? = nil) -> UINib {
         return UINib(
             nibName: string,
             bundle: bundle
         )
+    }
+}
+
+extension UIView {
+    class func fromNib<T>() -> T where T: UIView, T: NibConvertible {
+        guard let view = Bundle.main.loadNibNamed(T.nibName, owner: self, options: nil)?.first as? T else { fatalError("No \(T.nibName) available") }
+        return view
     }
 }

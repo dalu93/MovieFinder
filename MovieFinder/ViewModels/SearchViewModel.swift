@@ -20,17 +20,22 @@ protocol SearchViewModelType {
 }
 
 // MARK: - SearchViewModel declaration
-final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
+final class SearchViewModel<
+    APIService: APIConnectable,
+    SuggestionStore: SuggestionStoreType,
+    MainFlowController: MainFlowControllerType
+>: SearchViewModelType {
     // MARK: - Properties
     // MARK: Public properties
     var availableSuggestions: [Suggestion] {
         do {
+            log.debug("Loading suggestions from store")
             return try Array(_suggestionStore.all()
                 .map { Suggestion(with: $0) }
                 .sorted(by: { $0.createdAt > $1.createdAt })
                 .prefix(10))
         } catch {
-            log.error("Failed to load suggestions from Realm. \(error)")
+            log.error("Failed to load suggestions from store. \(error)")
             return []
         }
     }
@@ -50,7 +55,9 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     // MARK: - Methods
     // MARK: Public methods
     func search(for keyword: String) {
+        log.debug("Searching for \(keyword)")
         guard _isKeywordValid(keyword) else {
+            log.error("The keyword is invalid")
             searchStatus.value = .completed(.failed(AppError.Search.invalidKeyword))
             return
         }
@@ -64,6 +71,7 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
             self?.searchStatus.value = .completed(result)
             if let searchResult = result.value,
                 searchResult.totalResults > 0 {
+                log.debug("The result is valid and has more than 0 results. Storing the keyword")
                 self?._save(keyword)
             }
         }
@@ -72,11 +80,13 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
     }
 
     func showResult(for searchResult: SearchResult, keyword: String) {
-        guard searchResult.results.isEmpty == false else {
+        guard searchResult.totalResults > 0 else {
+            log.error("Cannot show list for 0 results")
             searchStatus.value = .completed(.failed(AppError.Search.noResults))
             return
         }
 
+        log.debug("Showing list for keyword: \(keyword)")
         _flowController.show(searchResult, using: keyword)
     }
 
@@ -95,7 +105,7 @@ final class SearchViewModel<APIService: APIConnectable>: SearchViewModelType {
         do {
             try self._suggestionStore.save(entity)
         } catch {
-            log.debug("The suggestion (\"\(entity.keyword)\") couldn't be saved. \(error)")
+            log.error("The suggestion (\"\(entity.keyword)\") couldn't be saved. \(error)")
         }
     }
 }

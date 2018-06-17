@@ -69,6 +69,12 @@
 		49BA6DB420D5703600296945 /* SearchResultSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DB320D5703600296945 /* SearchResultSpecs.swift */; };
 		49BA6DB620D5704600296945 /* search_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 49BA6DB520D5704600296945 /* search_result.json */; };
 		49BA6DB820D6312F00296945 /* SuggestionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DB720D6312F00296945 /* SuggestionSpecs.swift */; };
+		49BA6DBB20D6336C00296945 /* APIServiceSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DBA20D6336C00296945 /* APIServiceSpecs.swift */; };
+		49BA6DC720D6361900296945 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BA6DC620D6361900296945 /* OHHTTPStubs.framework */; };
+		49BA6DC820D6363700296945 /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49BA6DC620D6361900296945 /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		49BA6DCB20D63ECB00296945 /* SuggestionStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DCA20D63ECB00296945 /* SuggestionStoreSpecs.swift */; };
+		49BA6DCE20D6417B00296945 /* SearchViewModelSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DCD20D6417B00296945 /* SearchViewModelSpecs.swift */; };
+		49BA6DD020D6448300296945 /* many_search_results.json in Resources */ = {isa = PBXBuildFile; fileRef = 49BA6DCF20D6448300296945 /* many_search_results.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +94,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				49BA6DC820D6363700296945 /* OHHTTPStubs.framework in CopyFiles */,
 				49BA6D9820D5655900296945 /* Nimble.framework in CopyFiles */,
 				49BA6D9920D5655900296945 /* Quick.framework in CopyFiles */,
 			);
@@ -161,6 +168,11 @@
 		49BA6DB320D5703600296945 /* SearchResultSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSpecs.swift; sourceTree = "<group>"; };
 		49BA6DB520D5704600296945 /* search_result.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_result.json; sourceTree = "<group>"; };
 		49BA6DB720D6312F00296945 /* SuggestionSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionSpecs.swift; sourceTree = "<group>"; };
+		49BA6DBA20D6336C00296945 /* APIServiceSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceSpecs.swift; sourceTree = "<group>"; };
+		49BA6DC620D6361900296945 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
+		49BA6DCA20D63ECB00296945 /* SuggestionStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionStoreSpecs.swift; sourceTree = "<group>"; };
+		49BA6DCD20D6417B00296945 /* SearchViewModelSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelSpecs.swift; sourceTree = "<group>"; };
+		49BA6DCF20D6448300296945 /* many_search_results.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = many_search_results.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BA6DC720D6361900296945 /* OHHTTPStubs.framework in Frameworks */,
 				49BA6D9520D5653000296945 /* Quick.framework in Frameworks */,
 				49BA6D9620D5653000296945 /* Nimble.framework in Frameworks */,
 			);
@@ -237,6 +250,9 @@
 				49BA6DB020D56E4C00296945 /* Resources */,
 				49BA6DA220D5679500296945 /* Enums */,
 				49BA6DAD20D56D5500296945 /* Models */,
+				49BA6DB920D6335A00296945 /* Services */,
+				49BA6DC920D63EB600296945 /* Stores */,
+				49BA6DCC20D6416500296945 /* ViewModels */,
 				496E4C7F20D24D5900A133AD /* Info.plist */,
 				49BA6D9D20D565DE00296945 /* MovieFinderTests-Bridging-Header.h */,
 			);
@@ -315,6 +331,7 @@
 		49BA6D2A20D2BD9C00296945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49BA6DC620D6361900296945 /* OHHTTPStubs.framework */,
 				49BA6D9420D5653000296945 /* Nimble.framework */,
 				49BA6D9320D5653000296945 /* Quick.framework */,
 				49BA6D7920D4F0A200296945 /* Kingfisher.framework */,
@@ -415,8 +432,33 @@
 			children = (
 				49BA6DB120D56E6200296945 /* movies.json */,
 				49BA6DB520D5704600296945 /* search_result.json */,
+				49BA6DCF20D6448300296945 /* many_search_results.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		49BA6DB920D6335A00296945 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6DBA20D6336C00296945 /* APIServiceSpecs.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		49BA6DC920D63EB600296945 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6DCA20D63ECB00296945 /* SuggestionStoreSpecs.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		49BA6DCC20D6416500296945 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				49BA6DCD20D6417B00296945 /* SearchViewModelSpecs.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49BA6DB620D5704600296945 /* search_result.json in Resources */,
+				49BA6DD020D6448300296945 /* many_search_results.json in Resources */,
 				49BA6DB220D56E6200296945 /* movies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,14 +657,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49BA6DCB20D63ECB00296945 /* SuggestionStoreSpecs.swift in Sources */,
 				49BA6DB420D5703600296945 /* SearchResultSpecs.swift in Sources */,
 				49BA6DA820D56AB700296945 /* ConnectionStatusSpecs.swift in Sources */,
 				49BA6DA620D5697B00296945 /* CompletionSpecs.swift in Sources */,
+				49BA6DCE20D6417B00296945 /* SearchViewModelSpecs.swift in Sources */,
 				49BA6DA420D567B100296945 /* EndpointSpecs.swift in Sources */,
 				49BA6DAF20D56D6400296945 /* MovieSpecs.swift in Sources */,
 				49BA6DA120D5673500296945 /* ParameterSpecs.swift in Sources */,
 				49BA6DB820D6312F00296945 /* SuggestionSpecs.swift in Sources */,
 				49BA6D9F20D565DE00296945 /* HTTPHeaderSpecs.swift in Sources */,
+				49BA6DBB20D6336C00296945 /* APIServiceSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

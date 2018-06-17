@@ -20,31 +20,39 @@ struct APIService: APIConnectable {
     ) -> URLSessionDataTask {
         let request = _request(from: resource)
         let session = URLSession(configuration: sessionConfiguration)
+        log.debug("Starting request to \(request.url?.absoluteString ?? "null")")
         let task = session.dataTask(with: request) { data, urlResponse, error in
             DispatchQueue.main.async {
                 guard error == nil else {
-                    completion(.failed(AppError.Request.invalidConnection))
+                    let connectionError = AppError.Request.invalidConnection
+                    log.error("Request failed: \(connectionError)\n\(error!)")
+                    completion(.failed(connectionError))
                     return
                 }
 
                 guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                    log.error("Missing HTTPURLResponse")
                     completion(.failed(AppError.Request.invalidConnection))
                     return
                 }
 
                 guard (200..<300).contains(httpResponse.statusCode) else {
+                    log.error("Invalid status code: \(httpResponse.statusCode)")
                     completion(.failed(AppError.Request.invalidStatusCode(httpResponse.statusCode)))
                     return
                 }
 
                 guard let data = data, data.count > 0 else {
+                    log.error("Missing data or data.count == 0")
                     completion(.failed(AppError.Request.invalidResponseData))
                     return
                 }
 
                 do {
+                    log.debug("Parsing the object...")
                     completion(.success(try resource.parse(data)))
-                } catch {
+                } catch let parseError {
+                    log.error("Parsing object failed: \(parseError)")
                     completion(.failed(AppError.Request.invalidResponseData))
                 }
             }

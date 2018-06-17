@@ -24,16 +24,19 @@ extension RealmSwift.Object: Storeable {
 // MARK: - Realm extension for Store
 extension Realm: Store {
     func save(_ object: RealmSwift.Object) throws {
+        log.debug("Saving object: \(object)")
         try self.write {
             self.add(object)
         }
     }
 
     func deletePermanently(_ object: RealmSwift.Object) throws {
+        log.debug("Deleting object: \(object)")
         self.delete(object)
     }
 
     func all() throws -> [Object] {
+        log.debug("Retrieving all objects of type \(type(of: Object.self))")
         return Array(self.objects(Object.self))
     }
 }

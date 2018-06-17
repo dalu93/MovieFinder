@@ -14,7 +14,7 @@ import Nimble
 final class EndpointSpecs: QuickSpec {
 
     override func spec() {
-        describe("Converting the parameters array in a dictionary") {
+        describe("[UT] Converting the parameters array in a dictionary") {
             it("the dictionary should contain the correct keys and values") {
                 // GIVEN
                 let params = [
@@ -73,7 +73,7 @@ final class EndpointSpecs: QuickSpec {
             }
         }
 
-        describe("Converting the headers array in a dictionary") {
+        describe("[UT] Converting the headers array in a dictionary") {
             it("the dictionary should contain the correct keys and values") {
                 // GIVEN
                 let headers = [

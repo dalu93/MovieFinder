@@ -13,7 +13,7 @@ import Nimble
 
 final class SearchResultSpecs: QuickSpec {
     override func spec() {
-        describe("Loading search result from a valid JSON") {
+        describe("[UT] Loading search result from a valid JSON") {
             it("should return a valid SearchResult") {
                 // GIVEN
                 let bundle = Bundle(for: type(of: self))

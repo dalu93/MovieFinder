@@ -1,3 +1,4 @@
+github "AliSoftware/OHHTTPStubs"
 github "Quick/Quick"
 github "Quick/Nimble"
 github "realm/realm-cocoa"

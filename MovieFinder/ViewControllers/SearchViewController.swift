@@ -12,7 +12,7 @@ import Toaster
 
 // MARK: - SearchViewController declaration
 final class SearchViewController: UIViewController {
-    typealias ViewModel = SearchViewModel<APIService>
+    typealias ViewModel = SearchViewModel<APIService, SuggestionStore, MainFlowController>
     // MARK: - Properties
     // MARK: Private properties
     fileprivate let _viewModel: ViewModel
@@ -43,8 +43,8 @@ extension SearchViewController {
         _registerForKeyboardNotifications()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         _searchView.clearText()
     }
 

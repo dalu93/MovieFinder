@@ -13,7 +13,7 @@ import Nimble
 
 final class CompletionSpecs: QuickSpec {
     override func spec() {
-        describe("When the result is success") {
+        describe("[UT] When the result is success") {
             it("isSuccess should return true and value should be valid") {
                 // GIVEN
                 let completion = Completion<Int>.success(2)
@@ -26,7 +26,7 @@ final class CompletionSpecs: QuickSpec {
             }
         }
 
-        describe("When the result is failure") {
+        describe("[UT] When the result is failure") {
             it("isFailed should return true and error should be valid") {
                 // GIVEN
                 let error = NSError(

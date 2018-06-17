@@ -149,6 +149,7 @@ extension SearchView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let suggestion = _filteredSuggestions.get(at: indexPath.row) else { return }
         textField.text = suggestion.keyword
+        _currentKeyword = suggestion.keyword
         _startSearch(using: suggestion.keyword)
     }
 }

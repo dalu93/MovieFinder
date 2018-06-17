@@ -13,7 +13,7 @@ import Nimble
 
 final class MovieSpecs: QuickSpec {
     override func spec() {
-        describe("Converting a Movie to ListItem") {
+        describe("[UT] Converting a Movie to ListItem") {
             it("should contain all the correct values after the conversion and thumbnailUrl == nil") {
                 // GIVEN
                 let movie = Movie(
@@ -34,7 +34,7 @@ final class MovieSpecs: QuickSpec {
             }
         }
 
-        describe("Loading movies from a valid JSON") {
+        describe("[UT] Loading movies from a valid JSON") {
             it("should return an array of valid Movies") {
                 // GIVEN
                 let bundle = Bundle(for: type(of: self))

@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
+protocol MainFlowControllerType: FlowController where DependencyGroup == MainFlowController.DependencyGroup {
+    func getInitialController() -> UIViewController
+    func show(_ result: SearchResult, using keyword: String)
+}
+
 // MARK: - MainFlowController declaration
-final class MainFlowController: FlowController {
+final class MainFlowController: MainFlowControllerType {
     struct DependencyGroup {
         let apiService: APIService
         let suggestionStore: SuggestionStore
@@ -24,7 +29,8 @@ final class MainFlowController: FlowController {
     private weak var _navigationController: UINavigationController?
 
     func getInitialController() -> UIViewController {
-        let viewModel = SearchViewModel<APIService>(
+        log.debug("Getting the initial ViewController")
+        let viewModel = SearchViewModel<APIService, SuggestionStore, MainFlowController>(
             service: dependencies.apiService,
             flowController: self,
             suggestionStore: dependencies.suggestionStore
@@ -37,6 +43,7 @@ final class MainFlowController: FlowController {
     }
 
     func show(_ result: SearchResult, using keyword: String) {
+        log.debug("Getting the ListViewController for keyword: \(keyword)")
         let listViewModel = ListViewModel<APIService>(
             service: dependencies.apiService,
             keyword: keyword,

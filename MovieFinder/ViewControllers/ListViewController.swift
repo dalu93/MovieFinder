@@ -82,7 +82,7 @@ private extension ListViewController {
 // MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let rowOffset = 2
+        let rowOffset = 10
         guard indexPath.row + rowOffset >= _viewModel.state.value.items.count else {
             return
         }

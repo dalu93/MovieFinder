@@ -13,7 +13,7 @@ import Quick
 
 final class SuggestionSpecs: QuickSpec {
     override func spec() {
-        describe("Converting Suggestion to SuggestionEntity") {
+        describe("[UT] Converting Suggestion to SuggestionEntity") {
             it("should keep all the correct values") {
                 // GIVEN
                 let suggestion = Suggestion(
@@ -30,7 +30,7 @@ final class SuggestionSpecs: QuickSpec {
             }
         }
 
-        describe("Converting SuggestionEntity to Suggestion") {
+        describe("[UT] Converting SuggestionEntity to Suggestion") {
             it("should keep all the correct values") {
                 // GIVEN
                 let suggestion = Suggestion(

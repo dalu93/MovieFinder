@@ -14,7 +14,7 @@ import Nimble
 final class ParameterSpecs: QuickSpec {
 
     override func spec() {
-        describe("Converting the struct in a dictionary") {
+        describe("[UT] Converting the struct in a dictionary") {
             it("the dictionary should contain the correct key and value") {
                 // GIVEN
                 let parameter = Parameter(

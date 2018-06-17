@@ -13,7 +13,7 @@ import Nimble
 
 final class ConnectionStatusSpecs: QuickSpec {
     override func spec() {
-        describe("When the connection status is in progress") {
+        describe("[UT] When the connection status is in progress") {
             it("should return true when calling isInProgress") {
                 // GIVEN
                 let status = ConnectionStatus<Any, Any>.inProgress("")
@@ -23,7 +23,7 @@ final class ConnectionStatusSpecs: QuickSpec {
             }
         }
 
-        describe("When the connection status is not in progress") {
+        describe("[UT] When the connection status is not in progress") {
             it("should return false when calling isInProgress") {
                 // GIVEN
                 let status = ConnectionStatus<Any, Any>.notStarted

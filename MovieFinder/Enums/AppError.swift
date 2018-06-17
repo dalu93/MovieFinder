@@ -14,7 +14,7 @@ protocol AppErrorType: Error, CustomStringConvertible {}
 enum AppError {
 
     // MARK: - Request declaration
-    enum Request: AppErrorType {
+    enum Request: AppErrorType, Equatable {
         case invalidResponseData
         case invalidStatusCode(Int)
         case invalidConnection
@@ -26,6 +26,22 @@ enum AppError {
 
             case .invalidConnection:
                 return "Please, check your internet connection and try again."
+            }
+        }
+
+        static func == (lhs: Request, rhs: Request) -> Bool {
+            switch (lhs, rhs) {
+            case (.invalidResponseData, .invalidResponseData):
+                return true
+
+            case (.invalidConnection, .invalidConnection):
+                return true
+
+            case (.invalidStatusCode(let statusCodeL), .invalidStatusCode(let statusCodeR)):
+                return statusCodeL == statusCodeR
+
+            default:
+                return false
             }
         }
     }

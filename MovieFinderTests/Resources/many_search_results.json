@@ -1,0 +1,19 @@
+{
+    "page": 1,
+    "total_pages": 1,
+    "total_results": 2,
+    "results": [
+        {
+            "title": "Something",
+            "release_date": "some date",
+            "poster_path": "some path",
+            "overview": "some description"
+        },
+        {
+            "title": "Something else",
+            "release_date": "some other date",
+            "poster_path": "some other path",
+            "overview": "some other description"
+        }
+    ]
+}

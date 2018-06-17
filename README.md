@@ -21,6 +21,13 @@ $ carthage update --platform iOS
 Open the `MovieFinder.xcodeproj` file using Xcode and run the project
 
 ### Design decisions
+##### Architecture
+The application architecture is **MVVM**, with usage of *Services*, *Stores* and *FlowControllers* 
+for connecting to the API, persistance and navigation.
+Every object, which is being stored in the database, has his own *Entity* instance which is only
+used to communicate with the database layer. In this way any error and inconsistency should
+be avoided.
+
 ##### Usage of SwiftLint
 I have decided to use SwiftLint (version 0.25.1) with default rules to make sure that the 
 code is clean and readable for the iOS/Swift community members. Only one warning couldn't be

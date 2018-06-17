@@ -21,7 +21,7 @@ final class ListViewModel<APIService: APIConnectable> {
     // MARK: Private properties
     private let _apiService: APIService
     private let _keyword: String
-    
+
     // Search results will be stored in order here.
     private var _searchResults: [SearchResult]
     private var _currentPage: Int = 1

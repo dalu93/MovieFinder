@@ -122,11 +122,21 @@ private extension SearchViewController {
     @objc func _keyboardWillDisplay() {
         _searchViewCenterYAnchorConstraint.isActive = false
         _searchViewTopAnchorConstraint.isActive = true
+        view.setNeedsUpdateConstraints()
+
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 
     @objc func _keyboardWillHide() {
         _searchViewTopAnchorConstraint.isActive = false
         _searchViewCenterYAnchorConstraint.isActive = true
+        view.setNeedsUpdateConstraints()
+
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 

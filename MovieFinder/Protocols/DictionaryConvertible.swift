@@ -12,11 +12,3 @@ protocol DictionaryConvertible {
     associatedtype ValueType
     var dictionary: [String: ValueType]? { get }
 }
-
-// MARK: - NSData
-extension Data: DictionaryConvertible {
-    var dictionary: [String: AnyObject]? {
-        let serialized = try? JSONSerialization.jsonObject(with: self, options: .allowFragments)
-        return serialized as? [String: AnyObject]
-    }
-}

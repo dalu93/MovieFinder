@@ -68,6 +68,7 @@
 		49BA6DB220D56E6200296945 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 49BA6DB120D56E6200296945 /* movies.json */; };
 		49BA6DB420D5703600296945 /* SearchResultSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DB320D5703600296945 /* SearchResultSpecs.swift */; };
 		49BA6DB620D5704600296945 /* search_result.json in Resources */ = {isa = PBXBuildFile; fileRef = 49BA6DB520D5704600296945 /* search_result.json */; };
+		49BA6DB820D6312F00296945 /* SuggestionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BA6DB720D6312F00296945 /* SuggestionSpecs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		49BA6DB120D56E6200296945 /* movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		49BA6DB320D5703600296945 /* SearchResultSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSpecs.swift; sourceTree = "<group>"; };
 		49BA6DB520D5704600296945 /* search_result.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_result.json; sourceTree = "<group>"; };
+		49BA6DB720D6312F00296945 /* SuggestionSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionSpecs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +405,7 @@
 			children = (
 				49BA6DAE20D56D6400296945 /* MovieSpecs.swift */,
 				49BA6DB320D5703600296945 /* SearchResultSpecs.swift */,
+				49BA6DB720D6312F00296945 /* SuggestionSpecs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				49BA6DA420D567B100296945 /* EndpointSpecs.swift in Sources */,
 				49BA6DAF20D56D6400296945 /* MovieSpecs.swift in Sources */,
 				49BA6DA120D5673500296945 /* ParameterSpecs.swift in Sources */,
+				49BA6DB820D6312F00296945 /* SuggestionSpecs.swift in Sources */,
 				49BA6D9F20D565DE00296945 /* HTTPHeaderSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

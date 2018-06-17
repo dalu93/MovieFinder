@@ -14,7 +14,6 @@ import Nimble
 final class SearchViewModelSpecs: QuickSpec {
     override func spec() {
         let apiService = APIServiceMock()
-        apiService.responseType = .manyResults
         let store = SuggestionStoreMock()
         let flowController = MainFlowControllerMock()
         let viewModel = SearchViewModel<APIServiceMock, SuggestionStoreMock, MainFlowControllerMock>(
@@ -52,7 +51,7 @@ final class SearchViewModelSpecs: QuickSpec {
             describe("if the keyword is valid and the results are more than 0") {
                 it("should store the keyword") {
                     // GIVEN
-                    apiService.responseType = .manyResults
+                    apiService.responseFileName = "many_search_results"
                     let keyword = "aaaaa"
                     var isKeywordStored = false
                     viewModel.searchStatus.bind { status in
@@ -60,7 +59,8 @@ final class SearchViewModelSpecs: QuickSpec {
                         case .completed:
                             isKeywordStored = store.saveIsCalled
 
-                        default: break
+                        default:
+                            print(status)
                         }
                     }
 
@@ -72,22 +72,19 @@ final class SearchViewModelSpecs: QuickSpec {
                 }
             }
 
-            xdescribe("if the keyword is valid and the results are 0") {
+            describe("if the keyword is valid and the results are 0") {
                 it("should not store the keyword") {
                     // GIVEN
-                    apiService.responseType = .noResults
+                    apiService.responseFileName = "search_result"
                     store.saveIsCalled = false
                     let keyword = "aaaaa"
                     var isKeywordStored = true
-                    waitUntil { done in
-                        viewModel.searchStatus.bind { status in
-                            switch status {
-                            case .completed:
-                                isKeywordStored = store.saveIsCalled
-                                done()
+                    viewModel.searchStatus.bind { status in
+                        switch status {
+                        case .completed:
+                            isKeywordStored = store.saveIsCalled
 
-                            default: break
-                            }
+                        default: break
                         }
                     }
 
@@ -121,42 +118,6 @@ final class SearchViewModelSpecs: QuickSpec {
                 }
             }
         }
-    }
-}
-
-private class APIServiceMock: APIConnectable {
-    enum ResponseType {
-        case noResults
-        case manyResults
-    }
-
-    struct ImageProvider: ImageUrlProviderType {
-        func imageUrlUsing(_ path: String) -> URL? {
-            return nil
-        }
-    }
-
-    let baseAPIURL = ""
-    let imageUrlProvider = ImageProvider()
-    var responseType: ResponseType = .noResults
-    func load<Object>(resource: Resource<Object>, completion: @escaping (Completion<Object>) -> Void) -> Any {
-        switch responseType {
-        case .noResults:
-            let bundle = Bundle(for: type(of: self))
-            let url = bundle.url(forResource: "search_result", withExtension: "json")!
-            let data = try! Data(contentsOf: url)
-            let result = try! SearchResult(with: data)
-            completion(.success(result as! Object))
-
-        case .manyResults:
-            let bundle = Bundle(for: type(of: self))
-            let url = bundle.url(forResource: "many_search_results", withExtension: "json")!
-            let data = try! Data(contentsOf: url)
-            let result = try! SearchResult(with: data)
-            completion(.success(result as! Object))
-        }
-
-        return ()
     }
 }
 

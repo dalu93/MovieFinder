@@ -84,9 +84,17 @@ final class ListViewModel<APIService: APIConnectable> {
         guard state.value.isNextPageAvailable else { return }
         guard state.value.connectionStatus.isInProgress == false else { return }
 
+        // Avoid to download the same page
+        let newPageToDownload = _currentPage + 1
+        let isDownloaded = _searchResults.contains(where: {
+            $0.page == newPageToDownload
+        })
+
+        guard isDownloaded == false else { return }
+
         let request = SearchResult.get(
             with: _keyword,
-            at: _currentPage + 1,
+            at: newPageToDownload,
             using: _apiService
         ) { [weak self] result in
             guard let `self` = self else { return }

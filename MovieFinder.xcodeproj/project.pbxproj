@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		493AB22520D66A4300EF8779 /* ListViewModelSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493AB22420D66A4300EF8779 /* ListViewModelSpecs.swift */; };
+		493AB22720D66A8000EF8779 /* APIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493AB22620D66A8000EF8779 /* APIServiceMock.swift */; };
+		493AB22920D671EE00EF8779 /* search_result_page_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 493AB22820D671EE00EF8779 /* search_result_page_2.json */; };
 		496E4C6920D24D5700A133AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496E4C6820D24D5700A133AD /* AppDelegate.swift */; };
 		496E4C6E20D24D5700A133AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496E4C6C20D24D5700A133AD /* Main.storyboard */; };
 		496E4C7020D24D5900A133AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496E4C6F20D24D5900A133AD /* Assets.xcassets */; };
@@ -103,6 +106,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		493AB22420D66A4300EF8779 /* ListViewModelSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelSpecs.swift; sourceTree = "<group>"; };
+		493AB22620D66A8000EF8779 /* APIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceMock.swift; sourceTree = "<group>"; };
+		493AB22820D671EE00EF8779 /* search_result_page_2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_result_page_2.json; sourceTree = "<group>"; };
 		496E4C6520D24D5700A133AD /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496E4C6820D24D5700A133AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496E4C6D20D24D5700A133AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -253,6 +259,7 @@
 				49BA6DB920D6335A00296945 /* Services */,
 				49BA6DC920D63EB600296945 /* Stores */,
 				49BA6DCC20D6416500296945 /* ViewModels */,
+				493AB22620D66A8000EF8779 /* APIServiceMock.swift */,
 				496E4C7F20D24D5900A133AD /* Info.plist */,
 				49BA6D9D20D565DE00296945 /* MovieFinderTests-Bridging-Header.h */,
 			);
@@ -433,6 +440,7 @@
 				49BA6DB120D56E6200296945 /* movies.json */,
 				49BA6DB520D5704600296945 /* search_result.json */,
 				49BA6DCF20D6448300296945 /* many_search_results.json */,
+				493AB22820D671EE00EF8779 /* search_result_page_2.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -457,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				49BA6DCD20D6417B00296945 /* SearchViewModelSpecs.swift */,
+				493AB22420D66A4300EF8779 /* ListViewModelSpecs.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -560,6 +569,7 @@
 			files = (
 				49BA6DB620D5704600296945 /* search_result.json in Resources */,
 				49BA6DD020D6448300296945 /* many_search_results.json in Resources */,
+				493AB22920D671EE00EF8779 /* search_result_page_2.json in Resources */,
 				49BA6DB220D56E6200296945 /* movies.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,12 +670,14 @@
 				49BA6DCB20D63ECB00296945 /* SuggestionStoreSpecs.swift in Sources */,
 				49BA6DB420D5703600296945 /* SearchResultSpecs.swift in Sources */,
 				49BA6DA820D56AB700296945 /* ConnectionStatusSpecs.swift in Sources */,
+				493AB22720D66A8000EF8779 /* APIServiceMock.swift in Sources */,
 				49BA6DA620D5697B00296945 /* CompletionSpecs.swift in Sources */,
 				49BA6DCE20D6417B00296945 /* SearchViewModelSpecs.swift in Sources */,
 				49BA6DA420D567B100296945 /* EndpointSpecs.swift in Sources */,
 				49BA6DAF20D56D6400296945 /* MovieSpecs.swift in Sources */,
 				49BA6DA120D5673500296945 /* ParameterSpecs.swift in Sources */,
 				49BA6DB820D6312F00296945 /* SuggestionSpecs.swift in Sources */,
+				493AB22520D66A4300EF8779 /* ListViewModelSpecs.swift in Sources */,
 				49BA6D9F20D565DE00296945 /* HTTPHeaderSpecs.swift in Sources */,
 				49BA6DBB20D6336C00296945 /* APIServiceSpecs.swift in Sources */,
 			);

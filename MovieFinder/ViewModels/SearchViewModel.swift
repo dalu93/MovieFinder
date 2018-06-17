@@ -67,12 +67,13 @@ final class SearchViewModel<
             at: page,
             using: _service
         ) { [weak self] result in
-            self?.searchStatus.value = .completed(result)
             if let searchResult = result.value,
                 searchResult.totalResults > 0 {
                 log.debug("The result is valid and has more than 0 results. Storing the keyword")
                 self?._save(keyword)
             }
+
+            self?.searchStatus.value = .completed(result)
         }
 
         searchStatus.value = .inProgress(request)

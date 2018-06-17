@@ -47,7 +47,6 @@ private extension ListViewController {
     func _bind() {
         _viewModel.state.bindAndFire { [weak self] state in
             guard let `self` = self else { return }
-            self._tableView.reloadData()
 
             if state.isNextPageAvailable {
                 self._tableView.tableFooterView = self._tableFooterView
@@ -62,6 +61,8 @@ private extension ListViewController {
                     self._tableFooterView.set(
                         .error(AppError.List.loadingNextPageFailed)
                     )
+                } else {
+                    self._tableView.reloadData()
                 }
 
             default: break
@@ -82,7 +83,7 @@ private extension ListViewController {
 // MARK: - UITableViewDelegate
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let rowOffset = 10
+        let rowOffset = 1
         guard indexPath.row + rowOffset >= _viewModel.state.value.items.count else {
             return
         }

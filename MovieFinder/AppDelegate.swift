@@ -13,7 +13,7 @@ import RealmSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     private lazy var _apiService: APIService = {
         return APIService(
             baseAPIURL: "http://api.themoviedb.org/3",

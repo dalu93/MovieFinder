@@ -30,7 +30,7 @@ final class SearchView: UIView, ReusableView {
 
     /// The view height.
     var height: CGFloat {
-        return tableHeightConstraint.constant + 30
+        return tableHeightConstraint.constant + _textFieldHeight
     }
 
     override var isUserInteractionEnabled: Bool {
@@ -42,6 +42,7 @@ final class SearchView: UIView, ReusableView {
     }
 
     // MARK: Private properties
+    fileprivate let _textFieldHeight: CGFloat = 30
     fileprivate let _expandedTableViewHeight: CGFloat = SuggestionTableViewCell.height * 3
     fileprivate var _currentKeyword = "" {
         didSet {
@@ -170,10 +171,21 @@ private extension SearchView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         addSubview(textField)
 
-        textField.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        textField.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        textField.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        textField.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        textField.leadingAnchor.constraint(
+            equalTo: leadingAnchor
+        ).isActive = true
+
+        textField.trailingAnchor.constraint(
+            equalTo: trailingAnchor
+        ).isActive = true
+
+        textField.topAnchor.constraint(
+            equalTo: topAnchor
+        ).isActive = true
+
+        textField.heightAnchor.constraint(
+            equalToConstant: _textFieldHeight
+        ).isActive = true
 
         return textField
     }
@@ -190,10 +202,22 @@ private extension SearchView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(tableView)
 
-        tableView.topAnchor.constraint(equalTo: textField.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        tableHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: 0)
+        tableView.topAnchor.constraint(
+            equalTo: textField.bottomAnchor
+        ).isActive = true
+
+        tableView.leadingAnchor.constraint(
+            equalTo: leadingAnchor
+        ).isActive = true
+
+        tableView.trailingAnchor.constraint(
+            equalTo: trailingAnchor
+        ).isActive = true
+
+        tableHeightConstraint = tableView.heightAnchor.constraint(
+            equalToConstant: 0
+        )
+
         tableHeightConstraint.isActive = true
 
         return tableView

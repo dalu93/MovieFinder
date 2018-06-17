@@ -59,7 +59,16 @@ extension UINib {
 
 extension UIView {
     class func fromNib<T>() -> T where T: UIView, T: NibConvertible {
-        guard let view = Bundle.main.loadNibNamed(T.nibName, owner: self, options: nil)?.first as? T else { fatalError("No \(T.nibName) available") }
+        let optionalView = Bundle.main.loadNibNamed(
+            T.nibName,
+            owner: self,
+            options: nil
+        )?.first
+
+        guard let view = optionalView as? T else {
+            fatalError("No \(T.nibName) available")
+        }
+
         return view
     }
 }

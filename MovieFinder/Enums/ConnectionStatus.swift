@@ -9,6 +9,11 @@
 import Foundation
 
 // MARK: - ConnectionStatus declaration
+/// Describes all the phases of a remote connection.
+///
+/// - notStarted: The request didn't start yet.
+/// - inProgress: The request is in progress.
+/// - completed: The request is completed (either failure or success)
 enum ConnectionStatus<Request, Value> {
     case notStarted
     case inProgress(Request)

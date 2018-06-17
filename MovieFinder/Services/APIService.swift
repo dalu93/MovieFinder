@@ -9,11 +9,24 @@
 import Foundation
 
 // MARK: - APIService declaration
+/// The application API service used to connect to the API.
 struct APIService: APIConnectable {
+
+    /// The API base URL
     let baseAPIURL: String
+
+    /// The API-specific imageUrl provider.
     let imageUrlProvider: TMDBImageUrlProvider
+
+    /// The `URLSessionConfiguration` that the `APIService` will use for the requests.
     let sessionConfiguration: URLSessionConfiguration
 
+    /// Loads a specific resource by connecting to the API.
+    ///
+    /// - Parameters:
+    ///   - resource: The resource to load remotely.
+    ///   - completion: Called when the HTTP requests is finished.
+    /// - Returns: The `URLSessionDataTask` representation of the current HTTP request.
     func load<Object>(
         resource: Resource<Object>,
         completion: @escaping (Completion<Object>) -> Void

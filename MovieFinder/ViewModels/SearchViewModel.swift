@@ -30,10 +30,9 @@ final class SearchViewModel<
     var availableSuggestions: [Suggestion] {
         do {
             log.debug("Loading suggestions from store")
-            return try Array(_suggestionStore.all()
+            return try _suggestionStore.all()
                 .map { Suggestion(with: $0) }
                 .sorted(by: { $0.createdAt > $1.createdAt })
-                .prefix(10))
         } catch {
             log.error("Failed to load suggestions from store. \(error)")
             return []

@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - SearchResult declaration
+/// Describes the search result in the application.
 struct SearchResult: Codable {
 
     enum CodingKeys: String, CodingKey {
@@ -49,6 +50,15 @@ extension SearchResult: Equatable {
 
 // MARK: - API
 extension SearchResult {
+
+    /// Retrieves a new `SearchResult` object from the service.
+    ///
+    /// - Parameters:
+    ///   - keyword: The keyword to use.
+    ///   - page: The specific page you want to download.
+    ///   - service: The service to use.
+    ///   - completion: A completion block to be called when the request is finished.
+    /// - Returns: The request instance.
     static func get<APIService: APIConnectable>(
         with keyword: String,
         at page: Int,

@@ -9,7 +9,13 @@
 import Foundation
 
 // MARK: - TMDBImageUrlProvider declaration
+/// Provides the full URL for the posters.
 struct TMDBImageUrlProvider: ImageUrlProviderType {
+
+    /// Provides the full URL for the posters.
+    ///
+    /// - Parameter path: The path returned by the API.
+    /// - Returns: The complete URL.
     func imageUrlUsing(_ path: String) -> URL? {
         return URL(string: "http://image.tmdb.org/t/p/w92" + path)
     }

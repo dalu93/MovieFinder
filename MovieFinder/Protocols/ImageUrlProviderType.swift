@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Describes an object that provides a `URL` for an image path.
 protocol ImageUrlProviderType {
     func imageUrlUsing(_ path: String) -> URL?
 }

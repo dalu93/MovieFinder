@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - FlowController declaration
+/// Describes the structure of a basic FlowController.
 protocol FlowController {
     associatedtype DependencyGroup
     var dependencies: DependencyGroup { get }

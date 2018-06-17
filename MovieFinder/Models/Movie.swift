@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Movie declaration
+/// Describes a movie in the application
 struct Movie: Codable {
     enum CodingKeys: String, CodingKey {
         case posterPath = "poster_path"

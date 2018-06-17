@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - DictionaryConvertible declaration
+/// Describes an object that can be converted to `Dictionary`.
 protocol DictionaryConvertible {
     associatedtype ValueType
     var dictionary: [String: ValueType]? { get }

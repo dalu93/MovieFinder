@@ -49,7 +49,7 @@ final class SearchViewModelSpecs: QuickSpec {
                 }
             }
 
-            xdescribe("if the keyword is valid and the results are more than 0") {
+            describe("if the keyword is valid and the results are more than 0") {
                 it("should store the keyword") {
                     // GIVEN
                     apiService.responseType = .manyResults

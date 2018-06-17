@@ -10,15 +10,23 @@ import Foundation
 import UIKit
 
 // MARK: - ListFooterView declaration
+/// A view displaying either an activity indicator or an error message,
+/// to be displayed at the bottom of the list's tableView
+/// to mimic the "infinite scroll" behavior.
 final class ListFooterView: UIView {
 
     // MARK: - Mode internal declaration
+    /// View mode.
+    ///
+    /// - loading: The view should display the loading indicator.
+    /// - error: The view should display the error.
     enum Mode {
         case loading, error(AppErrorType)
     }
 
     // MARK: - Properties
     // MARK: Public properties
+    /// Called when the error message is tapped by the user.
     var didTapRetry: (() -> Void)?
 
     // MARK: Private propierties
@@ -49,6 +57,9 @@ final class ListFooterView: UIView {
 
     // MARK: - Methods
     // MARK: Public methods
+    /// Change the view's mode.
+    ///
+    /// - Parameter mode: The new mode.
     func set(_ mode: Mode) {
         _currentMode = mode
     }

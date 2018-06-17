@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - APIConnectable declaration
+/// Describes a structure which is able to load resources.
 protocol APIConnectable {
     associatedtype RequestType
     associatedtype ImageUrlProvider: ImageUrlProviderType

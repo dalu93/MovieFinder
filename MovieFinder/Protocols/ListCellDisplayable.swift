@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - ListCellDisplayable declaration
+/// Describes an item displayable in the `ListTableViewCell`.
 protocol ListCellDisplayable {
     var title: String { get }
     var thubmnailUrl: URL? { get }
@@ -17,6 +18,7 @@ protocol ListCellDisplayable {
 }
 
 // MARK: - ListItem declaration
+/// An item that can be displayed in the `ListTableViewCell`.
 struct ListItem: ListCellDisplayable {
     let title: String
     let thubmnailUrl: URL?
@@ -25,6 +27,7 @@ struct ListItem: ListCellDisplayable {
 }
 
 // MARK: - ListItemConvertible
+/// Describes an object that can be coverted to `ListItem`.
 protocol ListItemConvertible {
     var listItem: ListItem { get }
 }

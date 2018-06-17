@@ -10,21 +10,25 @@ import Foundation
 import UIKit
 
 // MARK: - SearchView declaration
+/// The view displays a `UITextField` and the live suggestion table.
 final class SearchView: UIView, ReusableView {
 
     // MARK: - Properties
     // MARK: Public properties
+    /// Bucket of available suggestions to be injected by the controller.
     var suggestions: [Suggestion] = [] {
         didSet {
             layoutSubviews()
         }
     }
 
+    /// Called when the search should start.
     var didSearch: ((String) -> Void)?
     var currentKeyword: String {
         return _currentKeyword
     }
 
+    /// The view height.
     var height: CGFloat {
         return tableHeightConstraint.constant + 30
     }
@@ -45,10 +49,10 @@ final class SearchView: UIView, ReusableView {
         }
     }
     fileprivate var _filteredSuggestions: [Suggestion] {
-        return suggestions.filter {
+        return Array(suggestions.filter {
             return $0.keyword.lowercased().hasPrefix(_currentKeyword.lowercased()) &&
                 $0.keyword.lowercased() != _currentKeyword.lowercased()
-        }
+        }.prefix(10))
     }
 
     // MARK: Private outlets
@@ -66,6 +70,7 @@ final class SearchView: UIView, ReusableView {
         return textField.becomeFirstResponder()
     }
 
+    /// Clears the text in the view.
     func clearText() {
         textField.text = ""
         _currentKeyword = ""
@@ -159,6 +164,7 @@ private extension SearchView {
     func _makeTextField() -> UITextField {
         let textField = UITextField(frame: .zero)
         textField.borderStyle = .roundedRect
+        textField.returnKeyType = .search
         textField.delegate = self
 
         textField.translatesAutoresizingMaskIntoConstraints = false

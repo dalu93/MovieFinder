@@ -15,12 +15,15 @@ protocol MainFlowControllerType: FlowController where DependencyGroup == MainFlo
 }
 
 // MARK: - MainFlowController declaration
+/// The `MainFlowController` is the `FlowController` responsible for getting
+/// the application initial controller and its parents.
 final class MainFlowController: MainFlowControllerType {
     struct DependencyGroup {
         let apiService: APIService
         let suggestionStore: SuggestionStore
     }
 
+    /// Dependencies needed in this flow.
     let dependencies: DependencyGroup
     init(dependencies: DependencyGroup) {
         self.dependencies = dependencies
@@ -28,6 +31,9 @@ final class MainFlowController: MainFlowControllerType {
 
     private weak var _navigationController: UINavigationController?
 
+    /// Get the flow's initial controller.
+    ///
+    /// - Returns: The flow's initial controller.
     func getInitialController() -> UIViewController {
         log.debug("Getting the initial ViewController")
         let viewModel = SearchViewModel<APIService, SuggestionStore, MainFlowController>(
@@ -42,6 +48,11 @@ final class MainFlowController: MainFlowControllerType {
         return _navigationController!
     }
 
+    /// Shows, by pushing in the navigation controller, the `ListViewController`.
+    ///
+    /// - Parameters:
+    ///   - result: The `SearchResult` for which you're displaying the list.
+    ///   - keyword: The keyword used for the search.
     func show(_ result: SearchResult, using keyword: String) {
         log.debug("Getting the ListViewController for keyword: \(keyword)")
         let listViewModel = ListViewModel<APIService>(

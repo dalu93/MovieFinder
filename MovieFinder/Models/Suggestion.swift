@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Suggestion declaration
+/// Describes a suggestion to be shown to the user when searching for a movie.
 struct Suggestion {
     let keyword: String
     let createdAt: Date

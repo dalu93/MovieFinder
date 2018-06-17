@@ -173,7 +173,7 @@ final class ListViewModelSpecs: QuickSpec {
                         didChangeState = true
                         switch state.connectionStatus {
                         case .completed(let result):
-                            actualError = result.error as! AppError.List
+                            actualError = result.error as? AppError.List
 
                         default: break
                         }
